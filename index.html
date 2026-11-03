@@ -3,266 +3,544 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Special for Deandra ✨</title>
+  <title>Deandra's Ultimate Aesthetic Universe 🌀✨</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Space+Grotesk:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #0d0b18;
+      font-family: 'Space Grotesk', sans-serif;
+      background: #07040f;
       background-image: 
-        radial-gradient(at 10% 10%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
-        radial-gradient(at 90% 90%, rgba(139, 92, 246, 0.2) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.8) 0px, transparent 100%);
-      color: #f1f5f9;
+        radial-gradient(circle at 10% 10%, rgba(255, 0, 128, 0.25) 0px, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(0, 240, 255, 0.2) 0px, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.15) 0px, transparent 60%);
+      color: #f8fafc;
       overflow-x: hidden;
     }
-    .font-handwriting { font-family: 'Sacramento', cursive; }
-    
-    .glass-card {
+
+    .font-cute { font-family: 'Fredoka', sans-serif; }
+    .font-handwriting { font-family: 'Caveat', cursive; }
+
+    /* Glassmorphism Styles */
+    .glass-box {
       background: rgba(255, 255, 255, 0.04);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     }
     
-    .glass-glow {
-      box-shadow: 0 0 25px rgba(236, 72, 153, 0.2);
+    .glass-neon-pink {
+      border: 2px solid rgba(255, 0, 128, 0.4);
+      box-shadow: 0 0 25px rgba(255, 0, 128, 0.2);
     }
 
+    .glass-neon-cyan {
+      border: 2px solid rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+    }
+
+    .sticker-badge {
+      background: linear-gradient(135deg, #ff007f, #7928ca);
+      box-shadow: 3px 3px 0px #00f0ff;
+    }
+
+    .sticker-badge-yellow {
+      background: linear-gradient(135deg, #ffea00, #ff0055);
+      box-shadow: -3px 3px 0px #ff007f;
+      color: #000;
+    }
+
+    /* Flip Card Animation */
+    .flip-card {
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 1.5rem;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Floating Keyframes */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+    .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+
+    /* Particles */
     .heart-particle {
       position: fixed;
       pointer-events: none;
-      animation: floatUp 4s linear forwards;
-      z-index: 50;
+      animation: floatUp 3.5s ease-out forwards;
+      z-index: 99;
     }
     @keyframes floatUp {
-      0% { transform: translateY(0) scale(0.8); opacity: 1; }
-      100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+      0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.3) rotate(360deg); opacity: 0; }
     }
 
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #07040f; }
+    ::-webkit-scrollbar-thumb { background: #ff007f; border-radius: 4px; }
+
+    /* Hide Number Spinners */
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   </style>
 </head>
-<body class="antialiased min-h-screen pb-24">
+<body class="antialiased min-h-screen relative pb-24 selection:bg-pink-500 selection:text-white">
 
-  <!-- Audio Player -->
+  <!-- Audio Player File -->
   <audio id="bg-music" src="shapeofmyheart.mp3"></audio>
+
+  <!-- Canvas Floating Hearts Container -->
   <div id="hearts-container"></div>
 
-  <!-- 1. HERO SECTION & MUSIC PLAYER -->
-  <section class="min-h-screen flex flex-col items-center justify-center p-4 relative">
-    <div class="glass-card glass-glow p-8 md:p-12 rounded-3xl max-w-xl w-full text-center relative z-10 border-pink-500/30">
-      <div class="inline-block p-3 rounded-full bg-pink-500/10 text-pink-400 mb-4 animate-bounce">
-        <i class="fa-solid fa-sparkles text-2xl"></i>
+  <!-- ================= 0. SECURITY GATEKEEPER ================= -->
+  <section id="gatekeeper" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#07040f]/95 backdrop-blur-xl transition-all duration-700">
+    <div id="gatekeeper-box" class="glass-box glass-neon-pink p-8 md:p-10 max-w-md w-full text-center rounded-[35px] relative animate-float">
+      
+      <div class="sticker-badge inline-block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white mb-4 -rotate-3">
+        🔒 CLASSIFIED AREA
       </div>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400 mb-3">
-        Hello Deandra ✨
+
+      <h1 class="font-cute text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 mb-2">
+        Who goes there?
       </h1>
-      <p class="text-gray-400 text-sm md:text-base mb-8">
-        This interactive web space was specially crafted by Danial, just for you.
+      <p class="text-xs text-gray-400 mb-6">
+        This aesthetic space is restricted to Deandra. Enter the passkey (Hint: Our Anniversary Date).
       </p>
 
-      <!-- Music Controller -->
-      <div class="glass-card p-4 rounded-2xl mb-6 flex flex-col items-center">
-        <button id="play-btn" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300 flex items-center justify-center gap-2">
-          <i class="fa-solid fa-play" id="play-icon"></i> <span id="play-text">Play Favorite Song</span>
-        </button>
-        <div id="lyrics-container" class="mt-4 min-h-[50px] flex items-center justify-center text-pink-300 font-medium text-center text-sm md:text-base px-2">
-          <p class="opacity-70">Click the button above to start playing...</p>
-        </div>
-      </div>
-      
-      <a href="#counter-section" class="text-xs text-gray-500 hover:text-pink-400 transition flex items-center justify-center gap-1">
-        Scroll down <i class="fa-solid fa-chevron-down animate-pulse"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- 2. RELATIONSHIP TIME COUNTER -->
-  <section id="counter-section" class="py-12 px-4 max-w-4xl mx-auto">
-    <div class="glass-card p-8 rounded-3xl text-center">
-      <h2 class="text-xl font-semibold text-gray-300 mb-2">Time We've Spent Together ⏳</h2>
-      <p class="text-xs text-pink-400 mb-6">Since March 3, 2026 (03-03-2026)</p>
-      
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="glass-card p-4 rounded-2xl">
-          <span id="days" class="text-3xl font-extrabold text-pink-400 block">0</span>
-          <span class="text-xs text-gray-400">Days</span>
-        </div>
-        <div class="glass-card p-4 rounded-2xl">
-          <span id="hours" class="text-3xl font-extrabold text-purple-400 block">0</span>
-          <span class="text-xs text-gray-400">Hours</span>
-        </div>
-        <div class="glass-card p-4 rounded-2xl">
-          <span id="minutes" class="text-3xl font-extrabold text-pink-400 block">0</span>
-          <span class="text-xs text-gray-400">Minutes</span>
-        </div>
-        <div class="glass-card p-4 rounded-2xl">
-          <span id="seconds" class="text-3xl font-extrabold text-purple-400 block">0</span>
-          <span class="text-xs text-gray-400">Seconds</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. MINI GAME: SECRET LOCK -->
-  <section class="py-12 px-4 max-w-xl mx-auto">
-    <div class="glass-card p-8 rounded-3xl text-center relative overflow-hidden">
-      <i id="lock-icon" class="fa-solid fa-lock text-4xl text-pink-500 mb-3"></i>
-      <h2 class="text-2xl font-bold text-white mb-1">Unlock My Heart 🔐</h2>
-      <p class="text-xs text-gray-400 mb-6">Enter our anniversary date (Day - Month - Year)</p>
-
-      <div class="flex justify-center gap-3 mb-6" id="lock-inputs">
-        <input type="number" id="digit1" class="w-14 h-16 text-2xl text-center glass-card rounded-xl font-bold text-pink-400 focus:outline-none focus:border-pink-500" placeholder="00">
-        <input type="number" id="digit2" class="w-14 h-16 text-2xl text-center glass-card rounded-xl font-bold text-pink-400 focus:outline-none focus:border-pink-500" placeholder="00">
-        <input type="number" id="digit3" class="w-14 h-16 text-2xl text-center glass-card rounded-xl font-bold text-pink-400 focus:outline-none focus:border-pink-500" placeholder="00">
+      <div class="relative mb-4">
+        <input type="password" id="pass-input" placeholder="e.g. 030326" class="w-full bg-white/10 border-2 border-pink-400/50 rounded-2xl py-3 px-4 text-center text-xl font-bold tracking-widest text-pink-300 focus:outline-none focus:border-cyan-400 transition placeholder:text-gray-600 placeholder:text-sm placeholder:tracking-normal">
       </div>
 
-      <button id="unlock-btn" class="w-full bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 font-semibold py-3 rounded-xl border border-pink-500/40 transition">
-        Try to Unlock
+      <button id="pass-btn" onclick="checkPassword()" class="w-full sticker-badge font-cute text-lg text-white font-bold py-3 rounded-2xl transform active:scale-95 transition hover:brightness-110">
+        Unlock Universe 🚀
       </button>
 
-      <p id="lock-error" class="text-xs text-red-400 mt-3 hidden">Wrong combination! Try remembering our anniversary date. 😜</p>
-
-      <!-- Prize Popup -->
-      <div id="lock-prize" class="hidden absolute inset-0 glass-card bg-slate-950/90 flex flex-col items-center justify-center p-6 z-20">
-        <i class="fa-solid fa-gift text-5xl text-pink-400 mb-3 animate-bounce"></i>
-        <h3 class="text-2xl font-bold text-white mb-2">Yay, You Did It! 🎉</h3>
-        <p class="text-sm text-gray-300 mb-4">You have earned 1 special wish from Danial today!</p>
-        <button onclick="document.getElementById('lock-prize').classList.add('hidden')" class="text-xs text-pink-400 underline">Close</button>
-      </div>
+      <p id="pass-error" class="text-xs text-rose-400 mt-3 font-semibold hidden">
+        Oopsie! Wrong password, try again! 🤪
+      </p>
     </div>
   </section>
 
-  <!-- 4. INTERACTIVE LOVE COUPONS -->
-  <section class="py-12 px-4 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold text-center text-white mb-2">Deandra's Special Coupons 🎟️</h2>
-    <p class="text-center text-xs text-gray-400 mb-8">Click a coupon below to redeem it with Danial</p>
+  <!-- ================= MAIN WEBSITE CONTENT ================= -->
+  <div id="main-content" class="hidden">
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div onclick="claimCoupon('Free Foodie Date')" class="glass-card p-6 rounded-2xl cursor-pointer hover:border-pink-500/50 transition transform hover:-translate-y-1">
-        <div class="text-pink-400 text-2xl mb-2"><i class="fa-solid fa-utensils"></i></div>
-        <h3 class="font-bold text-white text-base">Free Foodie Date</h3>
-        <p class="text-xs text-gray-400 mt-1">Pick whatever food or snacks you want today.</p>
-        <span class="inline-block mt-4 text-[10px] bg-pink-500/20 text-pink-300 px-2 py-1 rounded">Click to Redeem</span>
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-40 glass-box px-6 py-3 rounded-full border border-white/20 flex items-center gap-6 text-xs font-cute text-gray-300">
+      <a href="#hero" class="hover:text-pink-400 transition">Vibe</a>
+      <a href="#timer" class="hover:text-cyan-400 transition">Timer</a>
+      <a href="#wheel" class="hover:text-purple-400 transition">Spin</a>
+      <a href="#reasons" class="hover:text-pink-400 transition">Reasons</a>
+      <a href="#coupons" class="hover:text-yellow-400 transition">Coupons</a>
+      <a href="#gallery" class="hover:text-cyan-400 transition">Gallery</a>
+    </nav>
+
+    <!-- 1. HERO & MUSIC PLAYER -->
+    <section id="hero" class="min-h-screen flex flex-col items-center justify-center p-4 relative pt-20">
+      <!-- Floating Badges -->
+      <div class="absolute top-24 left-6 md:left-20 sticker-badge-yellow font-cute text-xs font-extrabold px-3 py-1 rounded-lg -rotate-12 animate-float">
+        STRICTLY BUCIN 👾
       </div>
-      
-      <div onclick="claimCoupon('Auto-Forgive Pass')" class="glass-card p-6 rounded-2xl cursor-pointer hover:border-purple-500/50 transition transform hover:-translate-y-1">
-        <div class="text-purple-400 text-2xl mb-2"><i class="fa-solid fa-face-smile-beam"></i></div>
-        <h3 class="font-bold text-white text-base">Auto-Forgive Pass</h3>
-        <p class="text-xs text-gray-400 mt-1">If Danial is being annoying, use this card for an instant free pass.</p>
-        <span class="inline-block mt-4 text-[10px] bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Click to Redeem</span>
+      <div class="absolute top-28 right-6 md:right-24 sticker-badge text-white font-cute text-xs font-extrabold px-3 py-1 rounded-lg rotate-12 animate-float" style="animation-delay: 1.5s;">
+        100% HANDMADE 💖
       </div>
 
-      <div onclick="claimCoupon('Movie Night Choice')" class="glass-card p-6 rounded-2xl cursor-pointer hover:border-pink-500/50 transition transform hover:-translate-y-1">
-        <div class="text-pink-400 text-2xl mb-2"><i class="fa-solid fa-film"></i></div>
-        <h3 class="font-bold text-white text-base">Movie Night Choice</h3>
-        <p class="text-xs text-gray-400 mt-1">Deandra picks the movie with zero complaints.</p>
-        <span class="inline-block mt-4 text-[10px] bg-pink-500/20 text-pink-300 px-2 py-1 rounded">Click to Redeem</span>
-      </div>
-    </div>
-  </section>
+      <div class="glass-box glass-neon-pink p-8 md:p-12 max-w-2xl w-full text-center rounded-[40px] relative z-10 my-8">
+        <h1 class="font-cute text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-300 mb-3">
+          Hey Deandra! ✨
+        </h1>
+        <p class="text-gray-300 text-sm md:text-base font-medium mb-8 leading-relaxed">
+          Welcome to your custom aesthetic universe. Specially crafted by Danial with zero corporate boring vibes!
+        </p>
 
-  <!-- 5. LOVE QUIZ -->
-  <section class="py-12 px-4 max-w-xl mx-auto">
-    <div class="glass-card p-8 rounded-3xl text-center">
-      <h2 class="text-2xl font-bold text-white mb-2">Quick Quiz 🧠</h2>
-      <p class="text-xs text-gray-400 mb-6">Answer this question to test our soulmate score!</p>
-
-      <div id="quiz-box">
-        <p id="quiz-question" class="text-base font-semibold text-pink-300 mb-4">Who is the most lovable and missed person?</p>
-        <div class="grid grid-cols-1 gap-3">
-          <button onclick="answerQuiz(true)" class="glass-card py-3 px-4 rounded-xl text-sm font-medium hover:bg-pink-500/20 transition">Danial for sure</button>
-          <button onclick="answerQuiz(true)" class="glass-card py-3 px-4 rounded-xl text-sm font-medium hover:bg-pink-500/20 transition">Deandra is super cute too</button>
+        <!-- Music Controller Box -->
+        <div class="glass-box p-6 rounded-3xl mb-4 text-center relative overflow-hidden border-cyan-400/30">
+          <button id="play-btn" onclick="toggleMusic()" class="w-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-cute font-bold text-base py-3 px-6 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
+            <i class="fa-solid fa-compact-disc text-xl" id="disc-icon"></i>
+            <span id="play-text">Play Our Vibe Track</span>
+          </button>
+          
+          <div id="lyrics-container" class="mt-4 min-h-[50px] flex items-center justify-center text-pink-300 font-bold text-sm md:text-base px-2">
+            <p class="opacity-60 italic text-xs">Hit play to drop the music & lyrics...</p>
+          </div>
         </div>
       </div>
-      <p id="quiz-result" class="text-sm font-bold text-emerald-400 mt-4 hidden">Your answer is 100% Correct! ❤️</p>
+    </section>
+
+    <!-- 2. TIME COUNTER & ANNIVERSARY MILESTONE -->
+    <section id="timer" class="py-16 px-4 max-w-4xl mx-auto">
+      <div class="glass-box glass-neon-cyan p-8 rounded-[35px] text-center relative">
+        <div class="sticker-badge-yellow inline-block px-3 py-1 rounded-md text-xs font-bold uppercase mb-3 rotate-2">
+          Time Continuum ⏳
+        </div>
+        <h2 class="font-cute text-3xl font-extrabold text-white mb-1">Days We've Been Glued Together</h2>
+        <p class="text-xs text-cyan-300 mb-8 font-mono">Started on March 3, 2026 (03-03-2026)</p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="bg-pink-500/10 border-2 border-pink-400/30 p-5 rounded-[30px_10px_30px_10px] transform hover:rotate-3 transition">
+            <span id="days" class="font-cute text-4xl font-extrabold text-pink-400 block">0</span>
+            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Days</span>
+          </div>
+          <div class="bg-cyan-500/10 border-2 border-cyan-400/30 p-5 rounded-[10px_30px_10px_30px] transform hover:-rotate-3 transition">
+            <span id="hours" class="font-cute text-4xl font-extrabold text-cyan-400 block">0</span>
+            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Hours</span>
+          </div>
+          <div class="bg-purple-500/10 border-2 border-purple-400/30 p-5 rounded-[30px_10px_30px_10px] transform hover:rotate-3 transition">
+            <span id="minutes" class="font-cute text-4xl font-extrabold text-purple-400 block">0</span>
+            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Minutes</span>
+          </div>
+          <div class="bg-yellow-500/10 border-2 border-yellow-400/30 p-5 rounded-[10px_30px_10px_30px] transform hover:-rotate-3 transition">
+            <span id="seconds" class="font-cute text-4xl font-extrabold text-yellow-400 block">0</span>
+            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Seconds</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar to 1st Year -->
+        <div class="bg-white/5 p-4 rounded-2xl border border-white/10">
+          <div class="flex justify-between text-xs text-gray-300 mb-2 font-cute">
+            <span>Year 1 Goal Progress</span>
+            <span id="year-progress-percent">0%</span>
+          </div>
+          <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+            <div id="year-progress-bar" class="bg-gradient-to-r from-pink-500 to-cyan-400 h-full w-0 transition-all duration-1000"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SPIN THE LOVE WHEEL GAME -->
+    <section id="wheel" class="py-16 px-4 max-w-xl mx-auto text-center">
+      <div class="glass-box p-8 rounded-[35px] relative">
+        <span class="sticker-badge text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Interactive Lucky Draw 🎡</span>
+        <h2 class="font-cute text-3xl font-extrabold text-white mt-3 mb-2">Spin the Love Wheel!</h2>
+        <p class="text-xs text-gray-400 mb-6">Spin to see what prize or date Danial owes you today.</p>
+
+        <div class="relative w-64 h-64 mx-auto mb-6">
+          <!-- Pointer -->
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-yellow-400 text-3xl drop-shadow">
+            <i class="fa-solid fa-caret-down"></i>
+          </div>
+          <!-- Wheel Circle -->
+          <div id="wheel-disc" class="w-full h-full rounded-full border-4 border-pink-400/50 bg-gradient-to-tr from-pink-600 via-purple-600 to-cyan-500 flex items-center justify-center text-white font-cute font-bold text-sm shadow-2xl transition-transform duration-[4000ms] cubic-bezier(0.15, 0.9, 0.15, 1)">
+            <span id="wheel-text" class="p-4 bg-black/40 rounded-full border border-white/20">TAP SPIN!</span>
+          </div>
+        </div>
+
+        <button onclick="spinWheel()" id="spin-btn" class="sticker-badge font-cute text-base text-white font-bold py-3 px-8 rounded-2xl transform active:scale-95 transition">
+          SPIN NOW! 🎯
+        </button>
+        <p id="wheel-result" class="text-sm font-bold text-pink-300 mt-4 hidden animate-bounce"></p>
+      </div>
+    </section>
+
+    <!-- 4. REASONS WHY I LOVE YOU (FLIP CARDS) -->
+    <section id="reasons" class="py-16 px-4 max-w-4xl mx-auto">
+      <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Why Deandra is Special 💌</h2>
+      <p class="text-center text-xs text-gray-400 mb-10">Click any card to flip and reveal a secret reason!</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass-box glass-neon-pink flex flex-col items-center justify-center p-4">
+              <i class="fa-solid fa-heart text-3xl text-pink-400 mb-2"></i>
+              <p class="font-cute font-bold text-white">Reason #1</p>
+              <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-pink-600 to-purple-700 p-6 flex items-center justify-center text-center">
+              <p class="text-xs md:text-sm text-white font-medium">Your smile instantly brightens up even my worst days!</p>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass-box glass-neon-cyan flex flex-col items-center justify-center p-4">
+              <i class="fa-solid fa-face-laugh-beam text-3xl text-cyan-400 mb-2"></i>
+              <p class="font-cute font-bold text-white">Reason #2</p>
+              <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-cyan-600 to-blue-700 p-6 flex items-center justify-center text-center">
+              <p class="text-xs md:text-sm text-white font-medium">You match my weird humor and chaotic energy perfectly.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass-box border border-yellow-400/40 flex flex-col items-center justify-center p-4">
+              <i class="fa-solid fa-star text-3xl text-yellow-400 mb-2"></i>
+              <p class="font-cute font-bold text-white">Reason #3</p>
+              <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-yellow-500 to-rose-600 p-6 flex items-center justify-center text-center">
+              <p class="text-xs md:text-sm text-white font-medium">Being around you feels like home, no matter where we are.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. INTERACTIVE COUPONS + RECEIPT MODAL -->
+    <section id="coupons" class="py-16 px-4 max-w-4xl mx-auto">
+      <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Claimable Love Vouchers 🎟️</h2>
+      <p class="text-center text-xs text-gray-400 mb-10">Tap any voucher to generate an official digital claim receipt!</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div onclick="claimCoupon('Unlimited Foodie Quest')" class="glass-box p-6 rounded-3xl cursor-pointer border-l-4 border-l-pink-500 hover:bg-white/10 transition transform hover:-rotate-2">
+          <div class="text-pink-400 text-3xl mb-2"><i class="fa-solid fa-pizza-slice"></i></div>
+          <h3 class="font-cute font-bold text-white text-lg">Foodie Quest Pass</h3>
+          <p class="text-xs text-gray-400 mt-2">Danial treats whatever food or snack you are craving today!</p>
+          <div class="mt-4 inline-block text-[10px] font-bold bg-pink-500/30 text-pink-300 px-3 py-1 rounded-full">CLAIM VOUCHER ➔</div>
+        </div>
+
+        <div onclick="claimCoupon('Instant Forgiveness Immunity')" class="glass-box p-6 rounded-3xl cursor-pointer border-l-4 border-l-cyan-400 hover:bg-white/10 transition transform hover:rotate-2">
+          <div class="text-cyan-400 text-3xl mb-2"><i class="fa-solid fa-shield-cat"></i></div>
+          <h3 class="font-cute font-bold text-white text-lg">Forgiveness Immunity</h3>
+          <p class="text-xs text-gray-400 mt-2">If Danial gets mildly annoying, use this for instant victory.</p>
+          <div class="mt-4 inline-block text-[10px] font-bold bg-cyan-500/30 text-cyan-300 px-3 py-1 rounded-full">CLAIM VOUCHER ➔</div>
+        </div>
+
+        <div onclick="claimCoupon('Movie Director Rights')" class="glass-box p-6 rounded-3xl cursor-pointer border-l-4 border-l-purple-500 hover:bg-white/10 transition transform hover:-rotate-2">
+          <div class="text-purple-400 text-3xl mb-2"><i class="fa-solid fa-clapperboard"></i></div>
+          <h3 class="font-cute font-bold text-white text-lg">Director's Cut Pass</h3>
+          <p class="text-xs text-gray-400 mt-2">Deandra picks movie & snacks. Zero complaints allowed!</p>
+          <div class="mt-4 inline-block text-[10px] font-bold bg-purple-500/30 text-purple-300 px-3 py-1 rounded-full">CLAIM VOUCHER ➔</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. LOVE METER / COMPATIBILITY TEST -->
+    <section class="py-16 px-4 max-w-xl mx-auto">
+      <div class="glass-box p-8 rounded-[35px] text-center">
+        <span class="sticker-badge text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Aesthetic Simulator 🧪</span>
+        <h2 class="font-cute text-2xl font-bold text-white mt-3 mb-4">Danial & Deandra Love Calculator</h2>
+
+        <div class="space-y-3 mb-6">
+          <input type="text" value="Danial" readonly class="w-full bg-white/5 border border-pink-400/30 rounded-xl py-2 px-4 text-center font-bold text-pink-400 text-sm">
+          <div class="text-xs text-gray-500 font-bold">+</div>
+          <input type="text" value="Deandra" readonly class="w-full bg-white/5 border border-cyan-400/30 rounded-xl py-2 px-4 text-center font-bold text-cyan-400 text-sm">
+        </div>
+
+        <button onclick="calculateLove()" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 font-cute text-sm text-white font-bold py-3 rounded-xl transition">
+          Calculate Compatibility ✨
+        </button>
+
+        <div id="love-meter-result" class="mt-6 hidden">
+          <div class="text-4xl font-cute font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300" id="love-score">999%</div>
+          <p class="text-xs text-emerald-400 font-bold mt-1">STATUS: MATCH MADE IN HEAVEN! 💖</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. OUR STORY TIMELINE -->
+    <section class="py-16 px-4 max-w-3xl mx-auto">
+      <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Our Chapter Timeline 📖</h2>
+      <p class="text-center text-xs text-gray-400 mb-10">Milestones of our story</p>
+
+      <div class="space-y-6 relative before:absolute before:inset-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-pink-500/30">
+        <!-- Milestone 1 -->
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-pink-400 bg-[#07040f] text-pink-400 font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+            1
+          </div>
+          <div class="glass-box p-5 rounded-2xl w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)]">
+            <span class="text-[10px] font-mono text-pink-400">March 3, 2026</span>
+            <h4 class="font-cute font-bold text-white text-base">The Official Beginning</h4>
+            <p class="text-xs text-gray-400 mt-1">The special day we officially started writing our story together.</p>
+          </div>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-cyan-400 bg-[#07040f] text-cyan-400 font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+            2
+          </div>
+          <div class="glass-box p-5 rounded-2xl w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)]">
+            <span class="text-[10px] font-mono text-cyan-400">Everyday Memories</span>
+            <h4 class="font-cute font-bold text-white text-base">Uncountable Laughs & Dates</h4>
+            <p class="text-xs text-gray-400 mt-1">From random late-night chats to exploring delicious food spots.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. POLAROID PHOTO GALLERY (WITH LIGHTBOX MODAL) -->
+    <section id="gallery" class="py-16 px-4 max-w-5xl mx-auto">
+      <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Snapshot Vault 📸</h2>
+      <p class="text-center text-xs text-gray-400 mb-10">Click any photo to view in full screen mode!</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div onclick="openLightbox('foto1.jpg', 'Cutest Moment #1')" class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 transform -rotate-3 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
+          <img src="foto1.jpg" alt="Photo 1" class="w-full h-44 object-cover rounded-xl mb-2">
+          <p class="text-center font-handwriting text-xl text-pink-300">Cutest moment #1</p>
+        </div>
+        <div onclick="openLightbox('foto2.jpg', 'Pure Chaos #2')" class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 transform rotate-3 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
+          <img src="foto2.jpg" alt="Photo 2" class="w-full h-44 object-cover rounded-xl mb-2">
+          <p class="text-center font-handwriting text-xl text-cyan-300">Pure chaos #2</p>
+        </div>
+        <div onclick="openLightbox('foto3.jpg', 'Favorite Smile #3')" class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 transform -rotate-2 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
+          <img src="foto3.jpg" alt="Photo 3" class="w-full h-44 object-cover rounded-xl mb-2">
+          <p class="text-center font-handwriting text-xl text-purple-300">Favorite smile #3</p>
+        </div>
+        <div onclick="openLightbox('foto4.jpg', 'Unfiltered Joy #4')" class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 transform rotate-2 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
+          <img src="foto4.jpg" alt="Photo 4" class="w-full h-44 object-cover rounded-xl mb-2">
+          <p class="text-center font-handwriting text-xl text-yellow-300">Unfiltered joy #4</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. RUNAWAY BUTTON SECTION -->
+    <section class="py-16 px-4 max-w-md mx-auto text-center">
+      <div class="glass-box p-8 rounded-[35px] relative overflow-hidden">
+        <h2 class="font-cute text-xl font-bold text-white mb-6">Deandra, how deeply do you adore Danial? 👀</h2>
+        <div class="flex justify-center gap-4 relative min-h-[60px]" id="btn-container">
+          <button id="btn-yes" onclick="sayYes()" class="sticker-badge text-white font-cute font-bold py-3 px-6 rounded-2xl shadow-lg transform hover:scale-110 transition">
+            Love You Tons! 💖
+          </button>
+          <button id="btn-no" onmouseover="runAway()" class="bg-white/10 text-gray-400 font-bold py-3 px-6 rounded-2xl absolute right-0 transition-all duration-200">
+            Meh...
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. INTERACTIVE ENVELOPE LOVE LETTER -->
+    <section class="py-16 px-4 max-w-2xl mx-auto text-center">
+      <div class="glass-box glass-neon-pink p-8 md:p-12 rounded-[40px] text-center relative">
+        <div class="text-pink-400 text-5xl mb-4 cursor-pointer hover:scale-110 transition" onclick="triggerHearts()">
+          <i class="fa-solid fa-envelope-open-text animate-bounce"></i>
+        </div>
+        <h2 class="font-cute text-3xl font-extrabold text-white mb-4">Transmission for Deandra</h2>
+        <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6 font-light">
+          Thank you for making life 100x more colorful and unpredictable. Even when I am goofy or annoying, I’m truly blessed to have you in my universe. Let’s keep rocking this story together!
+        </p>
+        <p class="font-handwriting text-4xl text-pink-400">- Yours, Danial -</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= MODALS & OVERLAYS ================= -->
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] rounded-2xl shadow-2xl border-2 border-white/20 mb-4">
+    <p id="lightbox-caption" class="font-cute text-lg text-pink-300 font-bold"></p>
+    <p class="text-xs text-gray-500 mt-2">Click anywhere to close</p>
+  </div>
+
+  <!-- RECEIPT VOUCHER MODAL -->
+  <div id="receipt-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-box p-8 rounded-3xl max-w-sm w-full text-center border-2 border-pink-400/50">
+      <div class="text-green-400 text-4xl mb-2"><i class="fa-solid fa-circle-check"></i></div>
+      <h3 class="font-cute text-2xl font-bold text-white mb-1">Voucher Claimed!</h3>
+      <p class="text-xs text-gray-400 mb-4">Official Receipt issued to Deandra</p>
+      
+      <div class="bg-white/5 border border-dashed border-white/20 p-4 rounded-xl text-left text-xs space-y-2 mb-6 font-mono">
+        <div><span class="text-gray-500">ITEM:</span> <span id="receipt-title" class="text-pink-300 font-bold"></span></div>
+        <div><span class="text-gray-500">ISSUER:</span> <span class="text-cyan-300">Danial</span></div>
+        <div><span class="text-gray-500">DATE:</span> <span class="text-gray-300" id="receipt-date"></span></div>
+        <div><span class="text-gray-500">STATUS:</span> <span class="text-emerald-400">REDEEMABLE 100%</span></div>
+      </div>
+
+      <button onclick="document.getElementById('receipt-modal').classList.add('hidden')" class="w-full sticker-badge font-cute text-sm text-white font-bold py-2 rounded-xl">
+        Close & Take Screenshot 📸
+      </button>
     </div>
-  </section>
+  </div>
 
-  <!-- 6. PHOTO GALLERY -->
-  <section class="py-12 px-4 max-w-5xl mx-auto">
-    <h2 class="text-2xl font-bold text-center text-white mb-2">Our Moments 📸</h2>
-    <p class="text-center text-xs text-gray-400 mb-8">Four of our favorite memories</p>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="glass-card p-3 rounded-2xl transform hover:scale-105 transition duration-300">
-        <img src="foto1.jpg" alt="Photo 1" class="w-full h-48 object-cover rounded-xl mb-3">
-        <p class="text-center text-xs text-gray-300 font-medium">Moment #1</p>
-      </div>
-      <div class="glass-card p-3 rounded-2xl transform hover:scale-105 transition duration-300">
-        <img src="foto2.jpg" alt="Photo 2" class="w-full h-48 object-cover rounded-xl mb-3">
-        <p class="text-center text-xs text-gray-300 font-medium">Moment #2</p>
-      </div>
-      <div class="glass-card p-3 rounded-2xl transform hover:scale-105 transition duration-300">
-        <img src="foto3.jpg" alt="Photo 3" class="w-full h-48 object-cover rounded-xl mb-3">
-        <p class="text-center text-xs text-gray-300 font-medium">Moment #3</p>
-      </div>
-      <div class="glass-card p-3 rounded-2xl transform hover:scale-105 transition duration-300">
-        <img src="foto4.jpg" alt="Photo 4" class="w-full h-48 object-cover rounded-xl mb-3">
-        <p class="text-center text-xs text-gray-300 font-medium">Moment #4</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. RUNAWAY BUTTON -->
-  <section class="py-16 px-4 max-w-md mx-auto text-center">
-    <div class="glass-card p-8 rounded-3xl relative">
-      <h2 class="text-xl font-bold text-white mb-6">Deandra, how much do you love Danial? 👀</h2>
-      <div class="flex justify-center gap-4 relative min-h-[60px]" id="btn-container">
-        <button id="btn-yes" class="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:scale-110 transition">Love You So Much!</button>
-        <button id="btn-no" class="glass-card text-gray-400 font-semibold py-3 px-6 rounded-xl absolute right-0 transition-all duration-200">Just Okay</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. LOVE LETTER -->
-  <section class="py-12 px-4 max-w-2xl mx-auto text-center">
-    <div class="glass-card p-8 md:p-12 rounded-3xl relative">
-      <div class="text-pink-400 text-4xl mb-4"><i class="fa-solid fa-heart"></i></div>
-      <h2 class="text-2xl font-bold text-white mb-4">A Note for Deandra</h2>
-      <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6 font-light">
-        Thank you for being here and bringing so much light into my days. Even though I can be annoying sometimes, I'm so grateful to have you by my side. Let's keep supporting each other and growing together forever!
-      </p>
-      <p class="font-handwriting text-3xl text-pink-400">- Danial -</p>
-    </div>
-  </section>
-
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // 1. MUSIC & LYRICS
+    // --- WEB AUDIO API (SOUND EFFECTS WITHOUT EXTERNAL MP3) ---
+    function playSound() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15); // A5
+        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.15);
+      } catch(e){}
+    }
+
+    // --- 0. GATEKEEPER SECURITY LOCK ---
+    function checkPassword() {
+      playSound();
+      const input = document.getElementById('pass-input').value.replace(/[^0-9]/g, '');
+      const err = document.getElementById('pass-error');
+      
+      // Accepts '030326' or full year '03032026'
+      if (input === '030326' || input === '03032026') {
+        const gatekeeper = document.getElementById('gatekeeper');
+        gatekeeper.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          gatekeeper.classList.add('hidden');
+          document.getElementById('main-content').classList.remove('hidden');
+          triggerHearts();
+        }, 700);
+      } else {
+        err.classList.remove('hidden');
+        document.getElementById('gatekeeper-box').classList.add('animate-pulse');
+        setTimeout(() => document.getElementById('gatekeeper-box').classList.remove('animate-pulse'), 500);
+      }
+    }
+
+    // --- 1. MUSIC & LYRIC SYNCHRONIZATION ---
     const audio = document.getElementById('bg-music');
-    const playBtn = document.getElementById('play-btn');
-    const playIcon = document.getElementById('play-icon');
-    const playText = document.getElementById('play-text');
     const lyricsContainer = document.getElementById('lyrics-container');
 
-        // --- 1. FITUR AUDIO & LIRIK ---
+    // Backstreet Boys - Shape of My Heart Reff Sample
     const lyricsData = [
-      { time: 0, text: "🎶 (Intro Musik) 🎶" },
-      { time: 60, text: "Now let me show you the shape of my heart" },
-      { time: 65, text: "Looking back on the things I've done" },
-      { time: 70, text: "I was trying to be someone (trying to be someone)" },
-      { time: 75, text: "I played my part, kept you in the dark" },
-      { time: 80, text: "Now let me show you the shape of my heart" },
-      // { time: 85, text: "Lirik selanjutnya..." }
+      { time: 0, text: "🎶 (Intro Music) 🎶" },
+      { time: 60, text: "Looking back on the things I've done" },
+      { time: 65, text: "I was trying to be someone" },
+      { time: 70, text: "I played my part, kept you in the dark" },
+      { time: 75, text: "Now let me show you the shape of my heart" }
     ];
 
+    function toggleMusic() {
+      playSound();
+      const playText = document.getElementById('play-text');
+      const discIcon = document.getElementById('disc-icon');
 
-    playBtn.addEventListener('click', () => {
       if (audio.paused) {
         audio.play();
-        playIcon.className = 'fa-solid fa-pause';
-        playText.innerText = 'Pause Song';
+        discIcon.classList.add('animate-spin');
+        playText.innerText = 'Pause Vibe Track';
       } else {
         audio.pause();
-        playIcon.className = 'fa-solid fa-play';
-        playText.innerText = 'Play Favorite Song';
+        discIcon.classList.remove('animate-spin');
+        playText.innerText = 'Play Our Vibe Track';
       }
-    });
+    }
 
     audio.addEventListener('timeupdate', () => {
       const cur = audio.currentTime;
@@ -270,10 +548,10 @@
       for (let i = 0; i < lyricsData.length; i++) {
         if (cur >= lyricsData[i].time) text = lyricsData[i].text;
       }
-      lyricsContainer.innerHTML = `<p class="animate-pulse">${text}</p>`;
+      lyricsContainer.innerHTML = `<p class="animate-pulse text-pink-300 font-bold">${text}</p>`;
     });
 
-    // 2. RELATIONSHIP COUNTER (From March 3, 2026)
+    // --- 2. TIME COUNTER & PROGRESS BAR ---
     const startDate = new Date('2026-03-03T00:00:00');
     function updateCounter() {
       const now = new Date();
@@ -288,64 +566,96 @@
       document.getElementById('hours').innerText = hours >= 0 ? hours : 0;
       document.getElementById('minutes').innerText = minutes >= 0 ? minutes : 0;
       document.getElementById('seconds').innerText = seconds >= 0 ? seconds : 0;
+
+      // Calculate percentage to 365 days
+      const pct = Math.min(100, Math.max(0, ((days / 365) * 100))).toFixed(1);
+      document.getElementById('year-progress-percent').innerText = `${pct}%`;
+      document.getElementById('year-progress-bar').style.width = `${pct}%`;
     }
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    // 3. SECRET LOCK
-    const secretCode = ['03', '03', '26'];
-    document.getElementById('unlock-btn').addEventListener('click', () => {
-      const d1 = document.getElementById('digit1').value.padStart(2, '0');
-      const d2 = document.getElementById('digit2').value.padStart(2, '0');
-      const d3 = document.getElementById('digit3').value.padStart(2, '0');
+    // --- 3. SPIN THE LOVE WHEEL ---
+    const wheelPrizes = ['Boba Date 🧋', 'Free Hug 🤗', 'Movie Choice 🍿', 'Danial Cooks 🍳', 'Unlimited Kisses 💋'];
+    let isSpinning = false;
+    function spinWheel() {
+      if (isSpinning) return;
+      playSound();
+      isSpinning = true;
+
+      const wheelDisc = document.getElementById('wheel-disc');
+      const wheelResult = document.getElementById('wheel-result');
+      const randomRot = 1440 + Math.floor(Math.random() * 360);
       
-      if (d1 === secretCode[0] && d2 === secretCode[1] && d3 === secretCode[2]) {
-        document.getElementById('lock-prize').classList.remove('hidden');
+      wheelDisc.style.transform = `rotate(${randomRot}deg)`;
+      
+      setTimeout(() => {
+        isSpinning = false;
+        const prize = wheelPrizes[Math.floor(Math.random() * wheelPrizes.length)];
+        wheelResult.innerText = `YOU WON: ${prize}! 🎉`;
+        wheelResult.classList.remove('hidden');
         triggerHearts();
-      } else {
-        const err = document.getElementById('lock-error');
-        err.classList.remove('hidden');
-        setTimeout(() => err.classList.add('hidden'), 3000);
-      }
-    });
+      }, 4000);
+    }
 
-    // 4. COUPON CLAIM
+    // --- 4. COUPON CLAIM & MODAL ---
     function claimCoupon(title) {
-      alert(`Coupon "${title}" successfully claimed! Take a screenshot and send it to Danial 💕`);
+      playSound();
+      document.getElementById('receipt-title').innerText = title;
+      document.getElementById('receipt-date').innerText = new Date().toLocaleDateString();
+      document.getElementById('receipt-modal').classList.remove('hidden');
       triggerHearts();
     }
 
-    // 5. QUIZ
-    function answerQuiz(isCorrect) {
-      document.getElementById('quiz-result').classList.remove('hidden');
+    // --- 5. LOVE METER CALCULATOR ---
+    function calculateLove() {
+      playSound();
+      document.getElementById('love-meter-result').classList.remove('hidden');
       triggerHearts();
     }
 
-    // 6. RUNAWAY BUTTON
-    const btnNo = document.getElementById('btn-no');
-    btnNo.addEventListener('mouseover', () => {
-      const rx = Math.floor(Math.random() * 160) - 80;
-      const ry = Math.floor(Math.random() * 80) - 40;
+    // --- 6. LIGHTBOX GALLERY ---
+    function openLightbox(src, caption) {
+      playSound();
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').innerText = caption;
+      document.getElementById('lightbox-modal').classList.remove('hidden');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.add('hidden');
+    }
+
+    // --- 7. RUNAWAY BUTTON ---
+    const noBtnMessages = ['Nice try! 😜', 'Nope! 🚀', 'Can\'t click me!', 'Too slow! 💨', 'Danial only! ❤️'];
+    let msgIdx = 0;
+    function runAway() {
+      playSound();
+      const btnNo = document.getElementById('btn-no');
+      const rx = Math.floor(Math.random() * 180) - 90;
+      const ry = Math.floor(Math.random() * 90) - 45;
       btnNo.style.transform = `translate(${rx}px, ${ry}px)`;
-    });
+      btnNo.innerText = noBtnMessages[msgIdx % noBtnMessages.length];
+      msgIdx++;
+    }
 
-    document.getElementById('btn-yes').addEventListener('click', () => {
+    function sayYes() {
+      playSound();
       alert('Aaaaa Danial loves Deandra so much too! 🥰💖');
       triggerHearts();
-    });
+    }
 
-    // HEART PARTICLES
+    // --- 8. FLOATING PARTICLES ---
     function triggerHearts() {
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 35; i++) {
         setTimeout(() => {
           const heart = document.createElement('div');
-          heart.className = 'heart-particle text-xl';
-          heart.innerText = ['💖', '✨', '🌸', '🥰'][Math.floor(Math.random() * 4)];
+          heart.className = 'heart-particle font-cute text-2xl';
+          heart.innerText = ['💖', '✨', '🛸', '🥰', '👾', '🌸'][Math.floor(Math.random() * 6)];
           heart.style.left = Math.random() * 100 + 'vw';
           heart.style.bottom = '0';
           document.body.appendChild(heart);
-          setTimeout(() => heart.remove(), 4000);
-        }, i * 80);
+          setTimeout(() => heart.remove(), 3500);
+        }, i * 70);
       }
     }
   </script>
