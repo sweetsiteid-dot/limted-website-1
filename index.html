@@ -22,7 +22,6 @@
     .font-serif-title { font-family: 'Cinzel', serif; }
     .font-handwriting { font-family: 'Sacramento', cursive; }
 
-    /* Glassmorphism Styles (Black & White Theme) */
     .glass-box {
       background: rgba(20, 20, 20, 0.6);
       backdrop-filter: blur(20px);
@@ -50,9 +49,7 @@
     }
 
     /* Flip Card Animation */
-    .flip-card {
-      perspective: 1000px;
-    }
+    .flip-card { perspective: 1000px; }
     .flip-card-inner {
       position: relative;
       width: 100%;
@@ -60,9 +57,7 @@
       transition: transform 0.6s;
       transform-style: preserve-3d;
     }
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
     .flip-card-front, .flip-card-back {
       position: absolute;
       width: 100%;
@@ -70,9 +65,7 @@
       backface-visibility: hidden;
       border-radius: 1.5rem;
     }
-    .flip-card-back {
-      transform: rotateY(180deg);
-    }
+    .flip-card-back { transform: rotateY(180deg); }
 
     /* Floating Animation */
     @keyframes floatSlow {
@@ -98,7 +91,6 @@
     ::-webkit-scrollbar-track { background: #050505; }
     ::-webkit-scrollbar-thumb { background: #ffffff; border-radius: 3px; }
 
-    /* Hide Number Input Spinners */
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   </style>
@@ -155,7 +147,6 @@
 
     <!-- 1. HERO & MUSIC PLAYER -->
     <section id="hero" class="min-h-screen flex flex-col items-center justify-center p-4 relative pt-20">
-      <!-- Floating Badges -->
       <div class="absolute top-24 left-6 md:left-20 badge-white font-mono text-[10px] font-bold px-3 py-1 rounded-md -rotate-12 animate-float">
         STRICTLY BUCIN 🖤
       </div>
@@ -171,7 +162,6 @@
           Welcome to your personal aesthetic dimension. Designed by Danial with timeless minimalist elegance.
         </p>
 
-        <!-- Music Controller Box -->
         <div class="glass-box p-6 rounded-3xl mb-2 text-center relative overflow-hidden border-white/20">
           <button id="play-btn" onclick="toggleMusic()" class="w-full bg-white hover:bg-gray-200 text-black font-bold text-sm py-3.5 px-6 rounded-2xl shadow-lg transition transform hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-3 tracking-wider uppercase">
             <i class="fa-solid fa-compact-disc text-lg" id="disc-icon"></i>
@@ -213,7 +203,6 @@
           </div>
         </div>
 
-        <!-- Progress Bar to 1st Year -->
         <div class="bg-white/5 p-4 rounded-2xl border border-white/10">
           <div class="flex justify-between text-xs text-gray-400 mb-2 font-mono">
             <span>ANNIVERSARY MILESTONE (YEAR 1)</span>
@@ -226,21 +215,36 @@
       </div>
     </section>
 
-    <!-- 3. SPIN THE LOVE WHEEL GAME -->
+    <!-- 3. SPIN THE LOVE WHEEL (WITH LABELED SEGMENTS) -->
     <section id="wheel" class="py-16 px-4 max-w-xl mx-auto text-center">
       <div class="glass-box p-8 rounded-[35px] relative border-white/20">
         <span class="badge-black text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase">INTERACTIVE DRAW 🎡</span>
         <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-white mt-4 mb-2">SPIN THE WHEEL</h2>
         <p class="text-xs text-gray-400 mb-6 font-light">Spin to unveil the reward Danial owes you today.</p>
 
-        <div class="relative w-60 h-60 mx-auto mb-6">
-          <!-- Pointer -->
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-white text-2xl">
+        <div class="relative w-64 h-64 md:w-72 md:h-72 mx-auto mb-6">
+          <!-- Top Pointer Pointer -->
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-20 text-white text-3xl drop-shadow-[0_4px_10px_rgba(255,255,255,0.5)]">
             <i class="fa-solid fa-caret-down"></i>
           </div>
-          <!-- Wheel Circle -->
-          <div id="wheel-disc" class="w-full h-full rounded-full border-2 border-white/40 bg-gradient-to-tr from-black via-zinc-900 to-zinc-800 flex items-center justify-center text-white font-mono font-bold text-xs shadow-2xl transition-transform duration-[4000ms] cubic-bezier(0.15, 0.9, 0.15, 1)">
-            <span id="wheel-text" class="p-4 bg-black/80 rounded-full border border-white/30 tracking-widest">TAP SPIN</span>
+
+          <!-- Wheel Disc with Radial Conic Gradient Segments -->
+          <div id="wheel-disc" class="relative w-full h-full rounded-full border-2 border-white/40 overflow-hidden shadow-2xl transition-transform duration-[4000ms] cubic-bezier(0.15, 0.9, 0.15, 1)" style="background: conic-gradient(#1c1c1f 0deg 59.5deg, #ffffff 59.5deg 60deg, #09090b 60deg 119.5deg, #ffffff 119.5deg 120deg, #1c1c1f 120deg 179.5deg, #ffffff 179.5deg 180deg, #09090b 180deg 239.5deg, #ffffff 239.5deg 240deg, #1c1c1f 240deg 299.5deg, #ffffff 299.5deg 300deg, #09090b 300deg 359.5deg, #ffffff 359.5deg 360deg);">
+            
+            <!-- Segment Labels -->
+            <div class="absolute inset-0 flex items-center justify-center font-mono text-[9px] md:text-[10px] text-white font-bold select-none">
+              <span class="absolute" style="transform: rotate(30deg) translateY(-90px);">BOBA DATE 🧋</span>
+              <span class="absolute" style="transform: rotate(90deg) translateY(-90px);">FREE HUG 🤗</span>
+              <span class="absolute" style="transform: rotate(150deg) translateY(-90px);">MOVIE NIGHT 🍿</span>
+              <span class="absolute" style="transform: rotate(210deg) translateY(-90px);">DANIAL COOKS 🍳</span>
+              <span class="absolute" style="transform: rotate(270deg) translateY(-90px);">KISS PASS 💋</span>
+              <span class="absolute" style="transform: rotate(330deg) translateY(-90px);">SECRET GIFT 🎁</span>
+            </div>
+
+            <!-- Center Pin -->
+            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+              <span id="wheel-text" class="w-16 h-16 rounded-full bg-black border border-white/40 flex items-center justify-center text-[10px] font-mono font-bold tracking-widest text-white shadow-xl">SPIN</span>
+            </div>
           </div>
         </div>
 
@@ -251,13 +255,12 @@
       </div>
     </section>
 
-    <!-- 4. REASONS WHY I LOVE YOU (FLIP CARDS) -->
+    <!-- 4. REASONS WHY I LOVE YOU -->
     <section id="reasons" class="py-16 px-4 max-w-4xl mx-auto">
       <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-center text-white mb-2">WHY YOU'RE SPECIAL 💌</h2>
       <p class="text-center text-xs text-gray-400 mb-10 font-mono">Tap any card to flip and reveal a hidden note</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
         <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
           <div class="flip-card-inner">
             <div class="flip-card-front glass-box border border-white/20 flex flex-col items-center justify-center p-4">
@@ -270,7 +273,6 @@
             </div>
           </div>
         </div>
-        <!-- Card 2 -->
         <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
           <div class="flip-card-inner">
             <div class="flip-card-front glass-box border border-white/20 flex flex-col items-center justify-center p-4">
@@ -283,7 +285,6 @@
             </div>
           </div>
         </div>
-        <!-- Card 3 -->
         <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
           <div class="flip-card-inner">
             <div class="flip-card-front glass-box border border-white/20 flex flex-col items-center justify-center p-4">
@@ -299,7 +300,7 @@
       </div>
     </section>
 
-    <!-- 5. INTERACTIVE COUPONS + RECEIPT MODAL -->
+    <!-- 5. INTERACTIVE COUPONS -->
     <section id="coupons" class="py-16 px-4 max-w-4xl mx-auto">
       <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-center text-white mb-2">LOVE VOUCHERS 🎟️</h2>
       <p class="text-center text-xs text-gray-400 mb-10 font-mono">Tap any voucher to issue an official claim receipt</p>
@@ -328,7 +329,7 @@
       </div>
     </section>
 
-    <!-- 6. LOVE METER / COMPATIBILITY TEST -->
+    <!-- 6. LOVE METER -->
     <section class="py-16 px-4 max-w-xl mx-auto">
       <div class="glass-box p-8 rounded-[35px] text-center border-white/20">
         <span class="badge-white text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase">COMPATIBILITY TEST 🧪</span>
@@ -357,7 +358,6 @@
       <p class="text-center text-xs text-gray-400 mb-10 font-mono">Key milestones of our ongoing journey</p>
 
       <div class="space-y-6 relative before:absolute before:inset-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-white/20">
-        <!-- Milestone 1 -->
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
           <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-[#050505] text-white font-mono font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
             1
@@ -369,7 +369,6 @@
           </div>
         </div>
 
-        <!-- Milestone 2 -->
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
           <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-[#050505] text-white font-mono font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
             2
@@ -383,7 +382,7 @@
       </div>
     </section>
 
-    <!-- 8. POLAROID PHOTO GALLERY (WITH LIGHTBOX MODAL) -->
+    <!-- 8. POLAROID PHOTO GALLERY -->
     <section id="gallery" class="py-16 px-4 max-w-5xl mx-auto">
       <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-center text-white mb-2">SNAPSHOT VAULT 📸</h2>
       <p class="text-center text-xs text-gray-400 mb-10 font-mono">Click any photo to view in full screen lightbox</p>
@@ -469,15 +468,14 @@
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // --- WEB AUDIO API SYNTHESIZER ---
     function playSound() {
       try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
-        osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.15); // G5
+        osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.15);
         gain.gain.setValueAtTime(0.08, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
         osc.connect(gain);
@@ -487,13 +485,11 @@
       } catch(e){}
     }
 
-    // --- 0. GATEKEEPER SECURITY LOCK ---
     function checkPassword() {
       playSound();
       const input = document.getElementById('pass-input').value.replace(/[^0-9]/g, '');
       const err = document.getElementById('pass-error');
       
-      // Accepts '030326' or full year '03032026'
       if (input === '030326' || input === '03032026') {
         const gatekeeper = document.getElementById('gatekeeper');
         gatekeeper.classList.add('opacity-0', 'pointer-events-none');
@@ -509,7 +505,6 @@
       }
     }
 
-    // --- 1. MUSIC & LYRIC SYNCHRONIZATION ---
     const audio = document.getElementById('bg-music');
     const lyricsContainer = document.getElementById('lyrics-container');
 
@@ -546,7 +541,6 @@
       lyricsContainer.innerHTML = `<p class="animate-pulse text-white font-semibold">${text}</p>`;
     });
 
-    // --- 2. TIME COUNTER & PROGRESS BAR ---
     const startDate = new Date('2026-03-03T00:00:00');
     function updateCounter() {
       const now = new Date();
@@ -569,9 +563,18 @@
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    // --- 3. SPIN THE LOVE WHEEL ---
-    const wheelPrizes = ['Boba Date 🧋', 'Free Hug 🤗', 'Movie Choice 🍿', 'Danial Cooks 🍳', 'Unlimited Kisses 💋'];
+    /* --- SPIN WHEEL LOGIC WITH PRECISE SLICE MATCHING --- */
+    const wheelSegments = [
+      'Boba Date 🧋', 
+      'Free Hug 🤗', 
+      'Movie Night 🍿', 
+      'Danial Cooks 🍳', 
+      'Kiss Pass 💋', 
+      'Secret Gift 🎁'
+    ];
     let isSpinning = false;
+    let currentRotation = 0;
+
     function spinWheel() {
       if (isSpinning) return;
       playSound();
@@ -579,20 +582,28 @@
 
       const wheelDisc = document.getElementById('wheel-disc');
       const wheelResult = document.getElementById('wheel-result');
-      const randomRot = 1440 + Math.floor(Math.random() * 360);
+
+      // Random 4 to 6 full spins + random slice angle
+      const addedRotation = 1440 + Math.floor(Math.random() * 360);
+      currentRotation += addedRotation;
       
-      wheelDisc.style.transform = `rotate(${randomRot}deg)`;
+      wheelDisc.style.transform = `rotate(${currentRotation}deg)`;
       
       setTimeout(() => {
         isSpinning = false;
-        const prize = wheelPrizes[Math.floor(Math.random() * wheelPrizes.length)];
+        
+        // Calculate index pointing under top 12 o'clock pointer
+        const actualDegrees = currentRotation % 360;
+        const landingAngle = (360 - actualDegrees) % 360;
+        const sliceIndex = Math.floor(landingAngle / 60);
+        const prize = wheelSegments[sliceIndex];
+
         wheelResult.innerText = `REWARD: ${prize} ✦`;
         wheelResult.classList.remove('hidden');
         triggerHearts();
       }, 4000);
     }
 
-    // --- 4. COUPON CLAIM & MODAL ---
     function claimCoupon(title) {
       playSound();
       document.getElementById('receipt-title').innerText = title;
@@ -601,14 +612,12 @@
       triggerHearts();
     }
 
-    // --- 5. LOVE METER CALCULATOR ---
     function calculateLove() {
       playSound();
       document.getElementById('love-meter-result').classList.remove('hidden');
       triggerHearts();
     }
 
-    // --- 6. LIGHTBOX GALLERY ---
     function openLightbox(src, caption) {
       playSound();
       document.getElementById('lightbox-img').src = src;
@@ -619,7 +628,6 @@
       document.getElementById('lightbox-modal').classList.add('hidden');
     }
 
-    // --- 7. RUNAWAY BUTTON ---
     const noBtnMessages = ['Nice try! 😜', 'Nope! 🚀', 'Can\'t click me!', 'Too slow! 💨', 'Danial only! 🖤'];
     let msgIdx = 0;
     function runAway() {
@@ -638,7 +646,6 @@
       triggerHearts();
     }
 
-    // --- 8. MONOCHROME PARTICLES ---
     function triggerHearts() {
       for (let i = 0; i < 35; i++) {
         setTimeout(() => {
