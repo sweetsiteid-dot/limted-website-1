@@ -1,155 +1,245 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Special For Deandra 💖</title>
+  <title>Special for Deandra ✨</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Sacramento&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0d0b18;
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(139, 92, 246, 0.2) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.8) 0px, transparent 100%);
+      color: #f1f5f9;
       overflow-x: hidden;
     }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .font-handwriting { font-family: 'Sacramento', cursive; }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
-    .glass {
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+    
+    .glass-glow {
+      box-shadow: 0 0 25px rgba(236, 72, 153, 0.2);
     }
-    .heart {
+
+    .heart-particle {
       position: fixed;
-      font-size: 1.5rem;
-      top: -10vh;
-      transform: translateY(0);
-      animation: fall 3s linear forwards;
-      z-index: 0;
+      pointer-events: none;
+      animation: floatUp 4s linear forwards;
+      z-index: 50;
     }
-    @keyframes fall {
-      to { transform: translateY(110vh); }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.8); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
     }
-    .lyric-line {
-      transition: all 0.3s ease;
-      opacity: 0.4;
-      transform: scale(0.9);
-    }
-    .lyric-active {
-      opacity: 1;
-      transform: scale(1.1);
-      color: #ec4899; 
-      font-weight: bold;
-    }
+
     input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-      -webkit-appearance: none; 
-      margin: 0; 
-    }
+    input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   </style>
 </head>
-<body class="font-sans text-gray-800 antialiased relative min-h-screen pb-20">
+<body class="antialiased min-h-screen pb-24">
 
+  <!-- Audio Player -->
   <audio id="bg-music" src="shapeofmyheart.mp3"></audio>
-
   <div id="hearts-container"></div>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col items-center justify-center relative z-10 px-4 text-center">
-    <div class="glass p-10 rounded-3xl shadow-2xl max-w-lg w-full transform hover:scale-105 transition duration-500">
-      <h1 class="text-4xl font-extrabold text-pink-600 mb-4 drop-shadow-md">Halo Deandra! ✨</h1>
-      <p class="text-lg text-gray-700 font-medium mb-6">Klik tombol di bawah biar suasananya makin asik ya.</p>
-      <button id="play-btn" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition mb-6 animate-pulse">
-        <i class="fa-solid fa-play mr-2"></i> Putar Lagu
-      </button>
-      <div id="lyrics-container" class="mt-4 h-24 overflow-hidden relative text-xl text-gray-700 flex items-center justify-center">
-        <p class="lyric-active text-center">Menunggu lagu diputar...</p>
+  <!-- 1. HERO SECTION & MUSIC PLAYER -->
+  <section class="min-h-screen flex flex-col items-center justify-center p-4 relative">
+    <div class="glass-card glass-glow p-8 md:p-12 rounded-3xl max-w-xl w-full text-center relative z-10 border-pink-500/30">
+      <div class="inline-block p-3 rounded-full bg-pink-500/10 text-pink-400 mb-4 animate-bounce">
+        <i class="fa-solid fa-sparkles text-2xl"></i>
       </div>
-    </div>
-  </section>
-
-  <!-- Mini Game: Buka Gembok Hati -->
-  <section class="py-20 relative z-10 px-4 flex flex-col items-center">
-    <div class="glass p-8 rounded-3xl shadow-2xl max-w-lg w-full text-center relative">
-      <i id="lock-icon" class="fa-solid fa-lock text-5xl text-pink-500 mb-4 transition-all duration-500"></i>
-      <h2 class="text-2xl font-bold text-gray-800 mb-2">Buka Gembok Hatiku 🔐</h2>
-      <p class="text-gray-600 mb-6 text-sm italic">(Clue: Tanggal kita jadian / bulan / tahun belakang)</p>
-      
-      <div class="flex justify-center gap-4 mb-6" id="lock-inputs">
-        <input type="number" id="digit1" min="0" max="99" class="w-16 h-20 text-3xl text-center bg-white/70 border-2 border-pink-300 rounded-xl focus:outline-none focus:border-pink-500 font-bold shadow-inner" placeholder="00">
-        <input type="number" id="digit2" min="0" max="99" class="w-16 h-20 text-3xl text-center bg-white/70 border-2 border-pink-300 rounded-xl focus:outline-none focus:border-pink-500 font-bold shadow-inner" placeholder="00">
-        <input type="number" id="digit3" min="0" max="99" class="w-16 h-20 text-3xl text-center bg-white/70 border-2 border-pink-300 rounded-xl focus:outline-none focus:border-pink-500 font-bold shadow-inner" placeholder="00">
-      </div>
-      
-      <button id="unlock-btn" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full shadow-md transition">Buka Sekarang!</button>
-      <p id="lock-error" class="text-red-500 font-medium mt-4 opacity-0 transition-opacity">Yaaah angkanya salah, coba ingat-ingat lagi! 😜</p>
-
-      <div id="win-message" class="hidden absolute inset-0 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center rounded-3xl z-20">
-        <i class="fa-solid fa-unlock-keyhole text-6xl text-green-500 mb-4 animate-bounce"></i>
-        <h3 class="text-3xl font-bold text-pink-600 mb-2">Terbuka! 🎉</h3>
-        <p class="text-lg text-gray-800 font-medium px-4">Makasih udah selalu ingat hal-hal kecil tentang kita. I love you! 💕</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Galeri Bucin -->
-  <section class="py-20 relative z-10 px-4">
-    <h2 class="text-3xl font-bold text-center text-white drop-shadow-lg mb-10">Momen Kita 📸</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      <div class="bg-white p-3 rounded-lg shadow-xl transform rotate-2 hover:rotate-0 transition">
-        <img src="foto1.jpg" alt="Kita 1" class="w-full h-48 object-cover rounded">
-        <p class="text-center font-handwriting mt-3 text-gray-600 font-semibold">Waktu itu lucu ya</p>
-      </div>
-      <div class="bg-white p-3 rounded-lg shadow-xl transform -rotate-3 hover:rotate-0 transition">
-        <img src="foto2.jpg" alt="Kita 2" class="w-full h-48 object-cover rounded">
-        <p class="text-center font-handwriting mt-3 text-gray-600 font-semibold">Paling gemes</p>
-      </div>
-      <div class="bg-white p-3 rounded-lg shadow-xl transform rotate-3 hover:rotate-0 transition">
-        <img src="foto3.jpg" alt="Kita 3" class="w-full h-48 object-cover rounded">
-        <p class="text-center font-handwriting mt-3 text-gray-600 font-semibold">Senyum kamu favoritku</p>
-      </div>
-      <div class="bg-white p-3 rounded-lg shadow-xl transform -rotate-2 hover:rotate-0 transition">
-        <img src="foto4.jpg" alt="Kita 4" class="w-full h-48 object-cover rounded">
-        <p class="text-center font-handwriting mt-3 text-gray-600 font-semibold">Hari terbaik!</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tombol Iseng -->
-  <section class="min-h-[60vh] flex flex-col items-center justify-center relative z-10 px-4">
-    <div class="glass p-10 rounded-3xl shadow-xl text-center max-w-md w-full">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Deandra, seberapa sayang kamu sama aku? 👀</h2>
-      <div class="flex justify-center gap-6 relative" id="btn-container">
-        <button id="btn-yes" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-110 transition">Sayang Banget!</button>
-        <button id="btn-no" class="bg-gray-400 text-white font-bold py-3 px-8 rounded-full shadow-lg absolute right-0 transition-all duration-200">Biasa Aja</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Surat Terbuka -->
-  <section class="py-20 relative z-10 px-4 flex justify-center">
-    <div class="glass p-8 md:p-12 rounded-3xl shadow-2xl max-w-2xl w-full text-center">
-      <i class="fa-solid fa-envelope-open-heart text-5xl text-rose-500 mb-6"></i>
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">Buat Deandra...</h2>
-      <p class="text-gray-700 leading-relaxed text-lg mb-6">
-        Terima kasih udah selalu jadi alasan aku senyum tiap hari. Walaupun aku kadang ngeselin, tapi kamu harus tau kalau aku bersyukur banget ada kamu. Tetap bareng-bareng terus ya! ❤️
+      <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400 mb-3">
+        Hello Deandra ✨
+      </h1>
+      <p class="text-gray-400 text-sm md:text-base mb-8">
+        This interactive web space was specially crafted by Danial, just for you.
       </p>
-      <p class="font-bold text-pink-600 text-xl">- Dari cowok paling keren, Danial -</p>
+
+      <!-- Music Controller -->
+      <div class="glass-card p-4 rounded-2xl mb-6 flex flex-col items-center">
+        <button id="play-btn" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-play" id="play-icon"></i> <span id="play-text">Play Favorite Song</span>
+        </button>
+        <div id="lyrics-container" class="mt-4 min-h-[50px] flex items-center justify-center text-pink-300 font-medium text-center text-sm md:text-base px-2">
+          <p class="opacity-70">Click the button above to start playing...</p>
+        </div>
+      </div>
+      
+      <a href="#counter-section" class="text-xs text-gray-500 hover:text-pink-400 transition flex items-center justify-center gap-1">
+        Scroll down <i class="fa-solid fa-chevron-down animate-pulse"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 2. RELATIONSHIP TIME COUNTER -->
+  <section id="counter-section" class="py-12 px-4 max-w-4xl mx-auto">
+    <div class="glass-card p-8 rounded-3xl text-center">
+      <h2 class="text-xl font-semibold text-gray-300 mb-2">Time We've Spent Together ⏳</h2>
+      <p class="text-xs text-pink-400 mb-6">Since March 3, 2026 (03-03-2026)</p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass-card p-4 rounded-2xl">
+          <span id="days" class="text-3xl font-extrabold text-pink-400 block">0</span>
+          <span class="text-xs text-gray-400">Days</span>
+        </div>
+        <div class="glass-card p-4 rounded-2xl">
+          <span id="hours" class="text-3xl font-extrabold text-purple-400 block">0</span>
+          <span class="text-xs text-gray-400">Hours</span>
+        </div>
+        <div class="glass-card p-4 rounded-2xl">
+          <span id="minutes" class="text-3xl font-extrabold text-pink-400 block">0</span>
+          <span class="text-xs text-gray-400">Minutes</span>
+        </div>
+        <div class="glass-card p-4 rounded-2xl">
+          <span id="seconds" class="text-3xl font-extrabold text-purple-400 block">0</span>
+          <span class="text-xs text-gray-400">Seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. MINI GAME: SECRET LOCK -->
+  <section class="py-12 px-4 max-w-xl mx-auto">
+    <div class="glass-card p-8 rounded-3xl text-center relative overflow-hidden">
+      <i id="lock-icon" class="fa-solid fa-lock text-4xl text-pink-500 mb-3"></i>
+      <h2 class="text-2xl font-bold text-white mb-1">Unlock My Heart 🔐</h2>
+      <p class="text-xs text-gray-400 mb-6">Enter our anniversary date (Day - Month - Year)</p>
+
+      <div class="flex justify-center gap-3 mb-6" id="lock-inputs">
+        <input type="number" id="digit1" class="w-14 h-16 text-2xl text-center glass-card rounded-xl font-bold text-pink-400 focus:outline-none focus:border-pink-500" placeholder="00">
+        <input type="number" id="digit2" class="w-14 h-16 text-2xl text-center glass-card rounded-xl font-bold text-pink-400 focus:outline-none focus:border-pink-500" placeholder="00">
+        <input type="number" id="digit3" class="w-14 h-16 text-2xl text-center glass-card rounded-xl font-bold text-pink-400 focus:outline-none focus:border-pink-500" placeholder="00">
+      </div>
+
+      <button id="unlock-btn" class="w-full bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 font-semibold py-3 rounded-xl border border-pink-500/40 transition">
+        Try to Unlock
+      </button>
+
+      <p id="lock-error" class="text-xs text-red-400 mt-3 hidden">Wrong combination! Try remembering our anniversary date. 😜</p>
+
+      <!-- Prize Popup -->
+      <div id="lock-prize" class="hidden absolute inset-0 glass-card bg-slate-950/90 flex flex-col items-center justify-center p-6 z-20">
+        <i class="fa-solid fa-gift text-5xl text-pink-400 mb-3 animate-bounce"></i>
+        <h3 class="text-2xl font-bold text-white mb-2">Yay, You Did It! 🎉</h3>
+        <p class="text-sm text-gray-300 mb-4">You have earned 1 special wish from Danial today!</p>
+        <button onclick="document.getElementById('lock-prize').classList.add('hidden')" class="text-xs text-pink-400 underline">Close</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. INTERACTIVE LOVE COUPONS -->
+  <section class="py-12 px-4 max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold text-center text-white mb-2">Deandra's Special Coupons 🎟️</h2>
+    <p class="text-center text-xs text-gray-400 mb-8">Click a coupon below to redeem it with Danial</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div onclick="claimCoupon('Free Foodie Date')" class="glass-card p-6 rounded-2xl cursor-pointer hover:border-pink-500/50 transition transform hover:-translate-y-1">
+        <div class="text-pink-400 text-2xl mb-2"><i class="fa-solid fa-utensils"></i></div>
+        <h3 class="font-bold text-white text-base">Free Foodie Date</h3>
+        <p class="text-xs text-gray-400 mt-1">Pick whatever food or snacks you want today.</p>
+        <span class="inline-block mt-4 text-[10px] bg-pink-500/20 text-pink-300 px-2 py-1 rounded">Click to Redeem</span>
+      </div>
+      
+      <div onclick="claimCoupon('Auto-Forgive Pass')" class="glass-card p-6 rounded-2xl cursor-pointer hover:border-purple-500/50 transition transform hover:-translate-y-1">
+        <div class="text-purple-400 text-2xl mb-2"><i class="fa-solid fa-face-smile-beam"></i></div>
+        <h3 class="font-bold text-white text-base">Auto-Forgive Pass</h3>
+        <p class="text-xs text-gray-400 mt-1">If Danial is being annoying, use this card for an instant free pass.</p>
+        <span class="inline-block mt-4 text-[10px] bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Click to Redeem</span>
+      </div>
+
+      <div onclick="claimCoupon('Movie Night Choice')" class="glass-card p-6 rounded-2xl cursor-pointer hover:border-pink-500/50 transition transform hover:-translate-y-1">
+        <div class="text-pink-400 text-2xl mb-2"><i class="fa-solid fa-film"></i></div>
+        <h3 class="font-bold text-white text-base">Movie Night Choice</h3>
+        <p class="text-xs text-gray-400 mt-1">Deandra picks the movie with zero complaints.</p>
+        <span class="inline-block mt-4 text-[10px] bg-pink-500/20 text-pink-300 px-2 py-1 rounded">Click to Redeem</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. LOVE QUIZ -->
+  <section class="py-12 px-4 max-w-xl mx-auto">
+    <div class="glass-card p-8 rounded-3xl text-center">
+      <h2 class="text-2xl font-bold text-white mb-2">Quick Quiz 🧠</h2>
+      <p class="text-xs text-gray-400 mb-6">Answer this question to test our soulmate score!</p>
+
+      <div id="quiz-box">
+        <p id="quiz-question" class="text-base font-semibold text-pink-300 mb-4">Who is the most lovable and missed person?</p>
+        <div class="grid grid-cols-1 gap-3">
+          <button onclick="answerQuiz(true)" class="glass-card py-3 px-4 rounded-xl text-sm font-medium hover:bg-pink-500/20 transition">Danial for sure</button>
+          <button onclick="answerQuiz(true)" class="glass-card py-3 px-4 rounded-xl text-sm font-medium hover:bg-pink-500/20 transition">Deandra is super cute too</button>
+        </div>
+      </div>
+      <p id="quiz-result" class="text-sm font-bold text-emerald-400 mt-4 hidden">Your answer is 100% Correct! ❤️</p>
+    </div>
+  </section>
+
+  <!-- 6. PHOTO GALLERY -->
+  <section class="py-12 px-4 max-w-5xl mx-auto">
+    <h2 class="text-2xl font-bold text-center text-white mb-2">Our Moments 📸</h2>
+    <p class="text-center text-xs text-gray-400 mb-8">Four of our favorite memories</p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="glass-card p-3 rounded-2xl transform hover:scale-105 transition duration-300">
+        <img src="foto1.jpg" alt="Photo 1" class="w-full h-48 object-cover rounded-xl mb-3">
+        <p class="text-center text-xs text-gray-300 font-medium">Moment #1</p>
+      </div>
+      <div class="glass-card p-3 rounded-2xl transform hover:scale-105 transition duration-300">
+        <img src="foto2.jpg" alt="Photo 2" class="w-full h-48 object-cover rounded-xl mb-3">
+        <p class="text-center text-xs text-gray-300 font-medium">Moment #2</p>
+      </div>
+      <div class="glass-card p-3 rounded-2xl transform hover:scale-105 transition duration-300">
+        <img src="foto3.jpg" alt="Photo 3" class="w-full h-48 object-cover rounded-xl mb-3">
+        <p class="text-center text-xs text-gray-300 font-medium">Moment #3</p>
+      </div>
+      <div class="glass-card p-3 rounded-2xl transform hover:scale-105 transition duration-300">
+        <img src="foto4.jpg" alt="Photo 4" class="w-full h-48 object-cover rounded-xl mb-3">
+        <p class="text-center text-xs text-gray-300 font-medium">Moment #4</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. RUNAWAY BUTTON -->
+  <section class="py-16 px-4 max-w-md mx-auto text-center">
+    <div class="glass-card p-8 rounded-3xl relative">
+      <h2 class="text-xl font-bold text-white mb-6">Deandra, how much do you love Danial? 👀</h2>
+      <div class="flex justify-center gap-4 relative min-h-[60px]" id="btn-container">
+        <button id="btn-yes" class="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:scale-110 transition">Love You So Much!</button>
+        <button id="btn-no" class="glass-card text-gray-400 font-semibold py-3 px-6 rounded-xl absolute right-0 transition-all duration-200">Just Okay</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. LOVE LETTER -->
+  <section class="py-12 px-4 max-w-2xl mx-auto text-center">
+    <div class="glass-card p-8 md:p-12 rounded-3xl relative">
+      <div class="text-pink-400 text-4xl mb-4"><i class="fa-solid fa-heart"></i></div>
+      <h2 class="text-2xl font-bold text-white mb-4">A Note for Deandra</h2>
+      <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6 font-light">
+        Thank you for being here and bringing so much light into my days. Even though I can be annoying sometimes, I'm so grateful to have you by my side. Let's keep supporting each other and growing together forever!
+      </p>
+      <p class="font-handwriting text-3xl text-pink-400">- Danial -</p>
     </div>
   </section>
 
   <script>
-    // --- 1. FITUR AUDIO & LIRIK ---
-    // Note: Lirik penuh bisa kamu cari di Google, lagu ini tentang ketulusan dan menunjukkan isi hati yang sebenarnya.
+    // 1. MUSIC & LYRICS
     const audio = document.getElementById('bg-music');
     const playBtn = document.getElementById('play-btn');
+    const playIcon = document.getElementById('play-icon');
+    const playText = document.getElementById('play-text');
     const lyricsContainer = document.getElementById('lyrics-container');
-    
+
         // --- 1. FITUR AUDIO & LIRIK ---
     const lyricsData = [
       { time: 0, text: "🎶 (Intro Musik) 🎶" },
@@ -163,98 +253,101 @@
 
 
     playBtn.addEventListener('click', () => {
-      if(audio.paused) {
+      if (audio.paused) {
         audio.play();
-        playBtn.innerHTML = '<i class="fa-solid fa-pause mr-2"></i> Jeda Lagu';
-        playBtn.classList.remove('animate-pulse');
+        playIcon.className = 'fa-solid fa-pause';
+        playText.innerText = 'Pause Song';
       } else {
         audio.pause();
-        playBtn.innerHTML = '<i class="fa-solid fa-play mr-2"></i> Putar Lagu';
+        playIcon.className = 'fa-solid fa-play';
+        playText.innerText = 'Play Favorite Song';
       }
     });
 
     audio.addEventListener('timeupdate', () => {
-      const currentTime = audio.currentTime;
-      let activeText = lyricsData[0].text;
-      
-      for(let i = 0; i < lyricsData.length; i++) {
-        if(currentTime >= lyricsData[i].time) {
-          activeText = lyricsData[i].text;
-        }
+      const cur = audio.currentTime;
+      let text = lyricsData[0].text;
+      for (let i = 0; i < lyricsData.length; i++) {
+        if (cur >= lyricsData[i].time) text = lyricsData[i].text;
       }
-      lyricsContainer.innerHTML = `<p class="lyric-active animate-pulse text-center w-full">${activeText}</p>`;
+      lyricsContainer.innerHTML = `<p class="animate-pulse">${text}</p>`;
     });
 
-    // --- 2. FITUR GAME: BUKA GEMBOK ---
-    const secretCode = ['03', '03', '26']; // Tanggal jadian: 03-03-2026
-    
-    const digit1 = document.getElementById('digit1');
-    const digit2 = document.getElementById('digit2');
-    const digit3 = document.getElementById('digit3');
-    const unlockBtn = document.getElementById('unlock-btn');
-    const lockError = document.getElementById('lock-error');
-    const winMessage = document.getElementById('win-message');
-    const lockIcon = document.getElementById('lock-icon');
-
-    unlockBtn.addEventListener('click', () => {
-      lockError.style.opacity = '0';
+    // 2. RELATIONSHIP COUNTER (From March 3, 2026)
+    const startDate = new Date('2026-03-03T00:00:00');
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
       
-      const v1 = digit1.value.padStart(2, '0');
-      const v2 = digit2.value.padStart(2, '0');
-      const v3 = digit3.value.padStart(2, '0');
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
 
-      if (v1 === secretCode[0] && v2 === secretCode[1] && v3 === secretCode[2]) {
-        lockIcon.classList.remove('fa-lock');
-        lockIcon.classList.add('fa-unlock');
-        lockIcon.classList.remove('text-pink-500');
-        lockIcon.classList.add('text-green-500');
-        
-        setTimeout(() => {
-          winMessage.classList.remove('hidden');
-          createRainOfHearts();
-        }, 500);
+      document.getElementById('days').innerText = days >= 0 ? days : 0;
+      document.getElementById('hours').innerText = hours >= 0 ? hours : 0;
+      document.getElementById('minutes').innerText = minutes >= 0 ? minutes : 0;
+      document.getElementById('seconds').innerText = seconds >= 0 ? seconds : 0;
+    }
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // 3. SECRET LOCK
+    const secretCode = ['03', '03', '26'];
+    document.getElementById('unlock-btn').addEventListener('click', () => {
+      const d1 = document.getElementById('digit1').value.padStart(2, '0');
+      const d2 = document.getElementById('digit2').value.padStart(2, '0');
+      const d3 = document.getElementById('digit3').value.padStart(2, '0');
+      
+      if (d1 === secretCode[0] && d2 === secretCode[1] && d3 === secretCode[2]) {
+        document.getElementById('lock-prize').classList.remove('hidden');
+        triggerHearts();
       } else {
-        lockError.style.opacity = '1';
-        document.getElementById('lock-inputs').classList.add('animate-pulse');
-        setTimeout(() => {
-          document.getElementById('lock-inputs').classList.remove('animate-pulse');
-        }, 500);
+        const err = document.getElementById('lock-error');
+        err.classList.remove('hidden');
+        setTimeout(() => err.classList.add('hidden'), 3000);
       }
     });
 
-    // --- 3. FITUR TOMBOL ISENG (KABUR) ---
-    const btnNo = document.getElementById('btn-no');
-    const btnContainer = document.getElementById('btn-container');
+    // 4. COUPON CLAIM
+    function claimCoupon(title) {
+      alert(`Coupon "${title}" successfully claimed! Take a screenshot and send it to Danial 💕`);
+      triggerHearts();
+    }
 
+    // 5. QUIZ
+    function answerQuiz(isCorrect) {
+      document.getElementById('quiz-result').classList.remove('hidden');
+      triggerHearts();
+    }
+
+    // 6. RUNAWAY BUTTON
+    const btnNo = document.getElementById('btn-no');
     btnNo.addEventListener('mouseover', () => {
-      const randomX = Math.floor(Math.random() * 150) - 75; 
-      const randomY = Math.floor(Math.random() * 100) - 50;
-      btnNo.style.transform = `translate(${randomX}px, ${randomY}px)`;
+      const rx = Math.floor(Math.random() * 160) - 80;
+      const ry = Math.floor(Math.random() * 80) - 40;
+      btnNo.style.transform = `translate(${rx}px, ${ry}px)`;
     });
 
     document.getElementById('btn-yes').addEventListener('click', () => {
-      alert('Aaaaa aku juga sayang banget sama kamu Deandra!!! 🥰💖');
-      createRainOfHearts();
+      alert('Aaaaa Danial loves Deandra so much too! 🥰💖');
+      triggerHearts();
     });
 
-    // --- 4. EFEK HUJAN HATI BACKGROUND ---
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerText = ['❤️', '💖', '✨', '🥰'][Math.floor(Math.random() * 4)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-      document.getElementById('hearts-container').appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }
-
-    function createRainOfHearts() {
-      for(let i=0; i<40; i++) {
-        setTimeout(createHeart, i * 100);
+    // HEART PARTICLES
+    function triggerHearts() {
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.className = 'heart-particle text-xl';
+          heart.innerText = ['💖', '✨', '🌸', '🥰'][Math.floor(Math.random() * 4)];
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.bottom = '0';
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 4000);
+        }, i * 80);
       }
     }
-    
-    setInterval(createHeart, 1000);
   </script>
 </body>
 </html>
