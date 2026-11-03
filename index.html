@@ -3,53 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deandra's Ultimate Aesthetic Universe 🌀✨</title>
+  <title>Deandra's Monochrome Universe 🖤✨</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Space+Grotesk:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Space+Grotesk:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Space Grotesk', sans-serif;
-      background: #07040f;
+      background: #050505;
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(255, 0, 128, 0.25) 0px, transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(0, 240, 255, 0.2) 0px, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.15) 0px, transparent 60%);
-      color: #f8fafc;
+        radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.08) 0px, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.05) 0px, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 0.9) 0px, transparent 60%);
+      color: #ffffff;
       overflow-x: hidden;
     }
 
-    .font-cute { font-family: 'Fredoka', sans-serif; }
-    .font-handwriting { font-family: 'Caveat', cursive; }
+    .font-serif-title { font-family: 'Cinzel', serif; }
+    .font-handwriting { font-family: 'Sacramento', cursive; }
 
-    /* Glassmorphism Styles */
+    /* Glassmorphism Styles (Black & White Theme) */
     .glass-box {
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
     }
     
-    .glass-neon-pink {
-      border: 2px solid rgba(255, 0, 128, 0.4);
-      box-shadow: 0 0 25px rgba(255, 0, 128, 0.2);
+    .glass-border-white {
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
     }
 
-    .glass-neon-cyan {
-      border: 2px solid rgba(0, 240, 255, 0.4);
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+    .badge-white {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 3px 3px 0px rgba(255, 255, 255, 0.3);
     }
 
-    .sticker-badge {
-      background: linear-gradient(135deg, #ff007f, #7928ca);
-      box-shadow: 3px 3px 0px #00f0ff;
-    }
-
-    .sticker-badge-yellow {
-      background: linear-gradient(135deg, #ffea00, #ff0055);
-      box-shadow: -3px 3px 0px #ff007f;
-      color: #000;
+    .badge-black {
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: -3px 3px 0px #ffffff;
     }
 
     /* Flip Card Animation */
@@ -77,10 +74,10 @@
       transform: rotateY(180deg);
     }
 
-    /* Floating Keyframes */
+    /* Floating Animation */
     @keyframes floatSlow {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(2deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
     }
     .animate-float { animation: floatSlow 4s ease-in-out infinite; }
 
@@ -97,16 +94,16 @@
     }
 
     /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #07040f; }
-    ::-webkit-scrollbar-thumb { background: #ff007f; border-radius: 4px; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #050505; }
+    ::-webkit-scrollbar-thumb { background: #ffffff; border-radius: 3px; }
 
-    /* Hide Number Spinners */
+    /* Hide Number Input Spinners */
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   </style>
 </head>
-<body class="antialiased min-h-screen relative pb-24 selection:bg-pink-500 selection:text-white">
+<body class="antialiased min-h-screen relative pb-24 selection:bg-white selection:text-black">
 
   <!-- Audio Player File -->
   <audio id="bg-music" src="shapeofmyheart.mp3"></audio>
@@ -115,30 +112,30 @@
   <div id="hearts-container"></div>
 
   <!-- ================= 0. SECURITY GATEKEEPER ================= -->
-  <section id="gatekeeper" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#07040f]/95 backdrop-blur-xl transition-all duration-700">
-    <div id="gatekeeper-box" class="glass-box glass-neon-pink p-8 md:p-10 max-w-md w-full text-center rounded-[35px] relative animate-float">
+  <section id="gatekeeper" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050505]/95 backdrop-blur-2xl transition-all duration-700">
+    <div id="gatekeeper-box" class="glass-box glass-border-white p-8 md:p-10 max-w-md w-full text-center rounded-[35px] relative animate-float">
       
-      <div class="sticker-badge inline-block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white mb-4 -rotate-3">
-        🔒 CLASSIFIED AREA
+      <div class="badge-white inline-block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 -rotate-2">
+        🔒 RESTRICTED ACCESS
       </div>
 
-      <h1 class="font-cute text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 mb-2">
-        Who goes there?
+      <h1 class="font-serif-title text-3xl md:text-4xl font-bold tracking-wider text-white mb-2">
+        WHO GOES THERE?
       </h1>
-      <p class="text-xs text-gray-400 mb-6">
-        This aesthetic space is restricted to Deandra. Enter the passkey (Hint: Our Anniversary Date).
+      <p class="text-xs text-gray-400 mb-6 font-light">
+        This space is reserved for Deandra. Enter passkey (Hint: Our Anniversary Date).
       </p>
 
-      <div class="relative mb-4">
-        <input type="password" id="pass-input" placeholder="e.g. 030326" class="w-full bg-white/10 border-2 border-pink-400/50 rounded-2xl py-3 px-4 text-center text-xl font-bold tracking-widest text-pink-300 focus:outline-none focus:border-cyan-400 transition placeholder:text-gray-600 placeholder:text-sm placeholder:tracking-normal">
+      <div class="relative mb-5">
+        <input type="password" id="pass-input" placeholder="e.g. 030326" class="w-full bg-white/5 border border-white/30 rounded-2xl py-3 px-4 text-center text-xl font-bold tracking-widest text-white focus:outline-none focus:border-white transition placeholder:text-gray-600 placeholder:text-sm placeholder:tracking-normal">
       </div>
 
-      <button id="pass-btn" onclick="checkPassword()" class="w-full sticker-badge font-cute text-lg text-white font-bold py-3 rounded-2xl transform active:scale-95 transition hover:brightness-110">
-        Unlock Universe 🚀
+      <button id="pass-btn" onclick="checkPassword()" class="w-full bg-white hover:bg-gray-200 text-black font-bold py-3.5 rounded-2xl transform active:scale-95 transition text-sm tracking-widest uppercase">
+        ENTER UNIVERSE ✦
       </button>
 
-      <p id="pass-error" class="text-xs text-rose-400 mt-3 font-semibold hidden">
-        Oopsie! Wrong password, try again! 🤪
+      <p id="pass-error" class="text-xs text-red-400 mt-4 font-mono hidden">
+        Incorrect passkey. Please try again.
       </p>
     </div>
   </section>
@@ -147,42 +144,42 @@
   <div id="main-content" class="hidden">
 
     <!-- NAVIGATION BAR -->
-    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-40 glass-box px-6 py-3 rounded-full border border-white/20 flex items-center gap-6 text-xs font-cute text-gray-300">
-      <a href="#hero" class="hover:text-pink-400 transition">Vibe</a>
-      <a href="#timer" class="hover:text-cyan-400 transition">Timer</a>
-      <a href="#wheel" class="hover:text-purple-400 transition">Spin</a>
-      <a href="#reasons" class="hover:text-pink-400 transition">Reasons</a>
-      <a href="#coupons" class="hover:text-yellow-400 transition">Coupons</a>
-      <a href="#gallery" class="hover:text-cyan-400 transition">Gallery</a>
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-40 glass-box px-6 py-2.5 rounded-full border border-white/20 flex items-center gap-6 text-xs font-mono text-gray-300">
+      <a href="#hero" class="hover:text-white transition">VIBE</a>
+      <a href="#timer" class="hover:text-white transition">TIMER</a>
+      <a href="#wheel" class="hover:text-white transition">SPIN</a>
+      <a href="#reasons" class="hover:text-white transition">REASONS</a>
+      <a href="#coupons" class="hover:text-white transition">VOUCHERS</a>
+      <a href="#gallery" class="hover:text-white transition">GALLERY</a>
     </nav>
 
     <!-- 1. HERO & MUSIC PLAYER -->
     <section id="hero" class="min-h-screen flex flex-col items-center justify-center p-4 relative pt-20">
       <!-- Floating Badges -->
-      <div class="absolute top-24 left-6 md:left-20 sticker-badge-yellow font-cute text-xs font-extrabold px-3 py-1 rounded-lg -rotate-12 animate-float">
-        STRICTLY BUCIN 👾
+      <div class="absolute top-24 left-6 md:left-20 badge-white font-mono text-[10px] font-bold px-3 py-1 rounded-md -rotate-12 animate-float">
+        STRICTLY BUCIN 🖤
       </div>
-      <div class="absolute top-28 right-6 md:right-24 sticker-badge text-white font-cute text-xs font-extrabold px-3 py-1 rounded-lg rotate-12 animate-float" style="animation-delay: 1.5s;">
-        100% HANDMADE 💖
+      <div class="absolute top-28 right-6 md:right-24 badge-black font-mono text-[10px] font-bold px-3 py-1 rounded-md rotate-12 animate-float" style="animation-delay: 1.5s;">
+        MONOCHROME EDITION ✦
       </div>
 
-      <div class="glass-box glass-neon-pink p-8 md:p-12 max-w-2xl w-full text-center rounded-[40px] relative z-10 my-8">
-        <h1 class="font-cute text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-300 mb-3">
-          Hey Deandra! ✨
+      <div class="glass-box glass-border-white p-8 md:p-14 max-w-2xl w-full text-center rounded-[40px] relative z-10 my-8">
+        <h1 class="font-serif-title text-4xl md:text-6xl font-extrabold tracking-wide text-white mb-3">
+          HEY DEANDRA
         </h1>
-        <p class="text-gray-300 text-sm md:text-base font-medium mb-8 leading-relaxed">
-          Welcome to your custom aesthetic universe. Specially crafted by Danial with zero corporate boring vibes!
+        <p class="text-gray-400 text-sm md:text-base font-light mb-8 leading-relaxed max-w-lg mx-auto">
+          Welcome to your personal aesthetic dimension. Designed by Danial with timeless minimalist elegance.
         </p>
 
         <!-- Music Controller Box -->
-        <div class="glass-box p-6 rounded-3xl mb-4 text-center relative overflow-hidden border-cyan-400/30">
-          <button id="play-btn" onclick="toggleMusic()" class="w-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-cute font-bold text-base py-3 px-6 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
-            <i class="fa-solid fa-compact-disc text-xl" id="disc-icon"></i>
-            <span id="play-text">Play Our Vibe Track</span>
+        <div class="glass-box p-6 rounded-3xl mb-2 text-center relative overflow-hidden border-white/20">
+          <button id="play-btn" onclick="toggleMusic()" class="w-full bg-white hover:bg-gray-200 text-black font-bold text-sm py-3.5 px-6 rounded-2xl shadow-lg transition transform hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-3 tracking-wider uppercase">
+            <i class="fa-solid fa-compact-disc text-lg" id="disc-icon"></i>
+            <span id="play-text">PLAY FAVORITE TRACK</span>
           </button>
           
-          <div id="lyrics-container" class="mt-4 min-h-[50px] flex items-center justify-center text-pink-300 font-bold text-sm md:text-base px-2">
-            <p class="opacity-60 italic text-xs">Hit play to drop the music & lyrics...</p>
+          <div id="lyrics-container" class="mt-4 min-h-[50px] flex items-center justify-center text-gray-200 font-medium text-sm md:text-base px-2">
+            <p class="opacity-50 italic text-xs">Hit play to launch music & synchronized lyrics...</p>
           </div>
         </div>
       </div>
@@ -190,40 +187,40 @@
 
     <!-- 2. TIME COUNTER & ANNIVERSARY MILESTONE -->
     <section id="timer" class="py-16 px-4 max-w-4xl mx-auto">
-      <div class="glass-box glass-neon-cyan p-8 rounded-[35px] text-center relative">
-        <div class="sticker-badge-yellow inline-block px-3 py-1 rounded-md text-xs font-bold uppercase mb-3 rotate-2">
-          Time Continuum ⏳
+      <div class="glass-box p-8 md:p-10 rounded-[35px] text-center relative border-white/20">
+        <div class="badge-white inline-block px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest mb-3 rotate-1">
+          TIME CONTINUUM ⏳
         </div>
-        <h2 class="font-cute text-3xl font-extrabold text-white mb-1">Days We've Been Glued Together</h2>
-        <p class="text-xs text-cyan-300 mb-8 font-mono">Started on March 3, 2026 (03-03-2026)</p>
+        <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-white mb-1">DAYS TOGETHER</h2>
+        <p class="text-xs text-gray-400 mb-8 font-mono">Started on March 3, 2026 (03-03-2026)</p>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div class="bg-pink-500/10 border-2 border-pink-400/30 p-5 rounded-[30px_10px_30px_10px] transform hover:rotate-3 transition">
-            <span id="days" class="font-cute text-4xl font-extrabold text-pink-400 block">0</span>
-            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Days</span>
+          <div class="bg-white/5 border border-white/20 p-5 rounded-2xl transform hover:scale-105 transition">
+            <span id="days" class="font-serif-title text-4xl font-bold text-white block">0</span>
+            <span class="text-[10px] text-gray-400 font-mono uppercase tracking-widest">Days</span>
           </div>
-          <div class="bg-cyan-500/10 border-2 border-cyan-400/30 p-5 rounded-[10px_30px_10px_30px] transform hover:-rotate-3 transition">
-            <span id="hours" class="font-cute text-4xl font-extrabold text-cyan-400 block">0</span>
-            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Hours</span>
+          <div class="bg-white/5 border border-white/20 p-5 rounded-2xl transform hover:scale-105 transition">
+            <span id="hours" class="font-serif-title text-4xl font-bold text-white block">0</span>
+            <span class="text-[10px] text-gray-400 font-mono uppercase tracking-widest">Hours</span>
           </div>
-          <div class="bg-purple-500/10 border-2 border-purple-400/30 p-5 rounded-[30px_10px_30px_10px] transform hover:rotate-3 transition">
-            <span id="minutes" class="font-cute text-4xl font-extrabold text-purple-400 block">0</span>
-            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Minutes</span>
+          <div class="bg-white/5 border border-white/20 p-5 rounded-2xl transform hover:scale-105 transition">
+            <span id="minutes" class="font-serif-title text-4xl font-bold text-white block">0</span>
+            <span class="text-[10px] text-gray-400 font-mono uppercase tracking-widest">Minutes</span>
           </div>
-          <div class="bg-yellow-500/10 border-2 border-yellow-400/30 p-5 rounded-[10px_30px_10px_30px] transform hover:-rotate-3 transition">
-            <span id="seconds" class="font-cute text-4xl font-extrabold text-yellow-400 block">0</span>
-            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Seconds</span>
+          <div class="bg-white/5 border border-white/20 p-5 rounded-2xl transform hover:scale-105 transition">
+            <span id="seconds" class="font-serif-title text-4xl font-bold text-white block">0</span>
+            <span class="text-[10px] text-gray-400 font-mono uppercase tracking-widest">Seconds</span>
           </div>
         </div>
 
         <!-- Progress Bar to 1st Year -->
         <div class="bg-white/5 p-4 rounded-2xl border border-white/10">
-          <div class="flex justify-between text-xs text-gray-300 mb-2 font-cute">
-            <span>Year 1 Goal Progress</span>
-            <span id="year-progress-percent">0%</span>
+          <div class="flex justify-between text-xs text-gray-400 mb-2 font-mono">
+            <span>ANNIVERSARY MILESTONE (YEAR 1)</span>
+            <span id="year-progress-percent" class="text-white font-bold">0%</span>
           </div>
-          <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
-            <div id="year-progress-bar" class="bg-gradient-to-r from-pink-500 to-cyan-400 h-full w-0 transition-all duration-1000"></div>
+          <div class="w-full bg-gray-900 rounded-full h-2.5 overflow-hidden p-0.5 border border-white/10">
+            <div id="year-progress-bar" class="bg-white h-full rounded-full w-0 transition-all duration-1000"></div>
           </div>
         </div>
       </div>
@@ -231,71 +228,71 @@
 
     <!-- 3. SPIN THE LOVE WHEEL GAME -->
     <section id="wheel" class="py-16 px-4 max-w-xl mx-auto text-center">
-      <div class="glass-box p-8 rounded-[35px] relative">
-        <span class="sticker-badge text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Interactive Lucky Draw 🎡</span>
-        <h2 class="font-cute text-3xl font-extrabold text-white mt-3 mb-2">Spin the Love Wheel!</h2>
-        <p class="text-xs text-gray-400 mb-6">Spin to see what prize or date Danial owes you today.</p>
+      <div class="glass-box p-8 rounded-[35px] relative border-white/20">
+        <span class="badge-black text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase">INTERACTIVE DRAW 🎡</span>
+        <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-white mt-4 mb-2">SPIN THE WHEEL</h2>
+        <p class="text-xs text-gray-400 mb-6 font-light">Spin to unveil the reward Danial owes you today.</p>
 
-        <div class="relative w-64 h-64 mx-auto mb-6">
+        <div class="relative w-60 h-60 mx-auto mb-6">
           <!-- Pointer -->
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-yellow-400 text-3xl drop-shadow">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-white text-2xl">
             <i class="fa-solid fa-caret-down"></i>
           </div>
           <!-- Wheel Circle -->
-          <div id="wheel-disc" class="w-full h-full rounded-full border-4 border-pink-400/50 bg-gradient-to-tr from-pink-600 via-purple-600 to-cyan-500 flex items-center justify-center text-white font-cute font-bold text-sm shadow-2xl transition-transform duration-[4000ms] cubic-bezier(0.15, 0.9, 0.15, 1)">
-            <span id="wheel-text" class="p-4 bg-black/40 rounded-full border border-white/20">TAP SPIN!</span>
+          <div id="wheel-disc" class="w-full h-full rounded-full border-2 border-white/40 bg-gradient-to-tr from-black via-zinc-900 to-zinc-800 flex items-center justify-center text-white font-mono font-bold text-xs shadow-2xl transition-transform duration-[4000ms] cubic-bezier(0.15, 0.9, 0.15, 1)">
+            <span id="wheel-text" class="p-4 bg-black/80 rounded-full border border-white/30 tracking-widest">TAP SPIN</span>
           </div>
         </div>
 
-        <button onclick="spinWheel()" id="spin-btn" class="sticker-badge font-cute text-base text-white font-bold py-3 px-8 rounded-2xl transform active:scale-95 transition">
-          SPIN NOW! 🎯
+        <button onclick="spinWheel()" id="spin-btn" class="bg-white hover:bg-gray-200 text-black font-bold text-xs py-3.5 px-8 rounded-2xl transform active:scale-95 transition tracking-widest uppercase">
+          SPIN NOW ✦
         </button>
-        <p id="wheel-result" class="text-sm font-bold text-pink-300 mt-4 hidden animate-bounce"></p>
+        <p id="wheel-result" class="text-xs font-mono font-bold text-white mt-4 hidden animate-bounce"></p>
       </div>
     </section>
 
     <!-- 4. REASONS WHY I LOVE YOU (FLIP CARDS) -->
     <section id="reasons" class="py-16 px-4 max-w-4xl mx-auto">
-      <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Why Deandra is Special 💌</h2>
-      <p class="text-center text-xs text-gray-400 mb-10">Click any card to flip and reveal a secret reason!</p>
+      <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-center text-white mb-2">WHY YOU'RE SPECIAL 💌</h2>
+      <p class="text-center text-xs text-gray-400 mb-10 font-mono">Tap any card to flip and reveal a hidden note</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Card 1 -->
         <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
           <div class="flip-card-inner">
-            <div class="flip-card-front glass-box glass-neon-pink flex flex-col items-center justify-center p-4">
-              <i class="fa-solid fa-heart text-3xl text-pink-400 mb-2"></i>
-              <p class="font-cute font-bold text-white">Reason #1</p>
-              <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
+            <div class="flip-card-front glass-box border border-white/20 flex flex-col items-center justify-center p-4">
+              <i class="fa-solid fa-heart text-2xl text-white mb-2"></i>
+              <p class="font-mono font-bold text-white text-xs uppercase tracking-widest">Note #1</p>
+              <span class="text-[10px] text-gray-500 mt-2">Tap to flip ➔</span>
             </div>
-            <div class="flip-card-back bg-gradient-to-br from-pink-600 to-purple-700 p-6 flex items-center justify-center text-center">
-              <p class="text-xs md:text-sm text-white font-medium">Your smile instantly brightens up even my worst days!</p>
+            <div class="flip-card-back bg-white text-black p-6 flex items-center justify-center text-center rounded-3xl">
+              <p class="text-xs md:text-sm font-medium">Your presence effortlessly brightens up even my worst days.</p>
             </div>
           </div>
         </div>
         <!-- Card 2 -->
         <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
           <div class="flip-card-inner">
-            <div class="flip-card-front glass-box glass-neon-cyan flex flex-col items-center justify-center p-4">
-              <i class="fa-solid fa-face-laugh-beam text-3xl text-cyan-400 mb-2"></i>
-              <p class="font-cute font-bold text-white">Reason #2</p>
-              <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
+            <div class="flip-card-front glass-box border border-white/20 flex flex-col items-center justify-center p-4">
+              <i class="fa-solid fa-sparkles text-2xl text-white mb-2"></i>
+              <p class="font-mono font-bold text-white text-xs uppercase tracking-widest">Note #2</p>
+              <span class="text-[10px] text-gray-500 mt-2">Tap to flip ➔</span>
             </div>
-            <div class="flip-card-back bg-gradient-to-br from-cyan-600 to-blue-700 p-6 flex items-center justify-center text-center">
-              <p class="text-xs md:text-sm text-white font-medium">You match my weird humor and chaotic energy perfectly.</p>
+            <div class="flip-card-back bg-white text-black p-6 flex items-center justify-center text-center rounded-3xl">
+              <p class="text-xs md:text-sm font-medium">You match my humor and chaotic energy like nobody else can.</p>
             </div>
           </div>
         </div>
         <!-- Card 3 -->
         <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
           <div class="flip-card-inner">
-            <div class="flip-card-front glass-box border border-yellow-400/40 flex flex-col items-center justify-center p-4">
-              <i class="fa-solid fa-star text-3xl text-yellow-400 mb-2"></i>
-              <p class="font-cute font-bold text-white">Reason #3</p>
-              <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
+            <div class="flip-card-front glass-box border border-white/20 flex flex-col items-center justify-center p-4">
+              <i class="fa-solid fa-moon text-2xl text-white mb-2"></i>
+              <p class="font-mono font-bold text-white text-xs uppercase tracking-widest">Note #3</p>
+              <span class="text-[10px] text-gray-500 mt-2">Tap to flip ➔</span>
             </div>
-            <div class="flip-card-back bg-gradient-to-br from-yellow-500 to-rose-600 p-6 flex items-center justify-center text-center">
-              <p class="text-xs md:text-sm text-white font-medium">Being around you feels like home, no matter where we are.</p>
+            <div class="flip-card-back bg-white text-black p-6 flex items-center justify-center text-center rounded-3xl">
+              <p class="text-xs md:text-sm font-medium">Being with you always feels like home, no matter where we are.</p>
             </div>
           </div>
         </div>
@@ -304,83 +301,83 @@
 
     <!-- 5. INTERACTIVE COUPONS + RECEIPT MODAL -->
     <section id="coupons" class="py-16 px-4 max-w-4xl mx-auto">
-      <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Claimable Love Vouchers 🎟️</h2>
-      <p class="text-center text-xs text-gray-400 mb-10">Tap any voucher to generate an official digital claim receipt!</p>
+      <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-center text-white mb-2">LOVE VOUCHERS 🎟️</h2>
+      <p class="text-center text-xs text-gray-400 mb-10 font-mono">Tap any voucher to issue an official claim receipt</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div onclick="claimCoupon('Unlimited Foodie Quest')" class="glass-box p-6 rounded-3xl cursor-pointer border-l-4 border-l-pink-500 hover:bg-white/10 transition transform hover:-rotate-2">
-          <div class="text-pink-400 text-3xl mb-2"><i class="fa-solid fa-pizza-slice"></i></div>
-          <h3 class="font-cute font-bold text-white text-lg">Foodie Quest Pass</h3>
-          <p class="text-xs text-gray-400 mt-2">Danial treats whatever food or snack you are craving today!</p>
-          <div class="mt-4 inline-block text-[10px] font-bold bg-pink-500/30 text-pink-300 px-3 py-1 rounded-full">CLAIM VOUCHER ➔</div>
+        <div onclick="claimCoupon('Unlimited Foodie Quest')" class="glass-box p-6 rounded-3xl cursor-pointer border-l-4 border-l-white hover:bg-white/10 transition transform hover:-rotate-1">
+          <div class="text-white text-2xl mb-2"><i class="fa-solid fa-utensils"></i></div>
+          <h3 class="font-bold text-white text-base">Foodie Quest Pass</h3>
+          <p class="text-xs text-gray-400 mt-2 font-light">Danial treats whatever food or snack you crave today.</p>
+          <div class="mt-4 inline-block text-[10px] font-mono font-bold bg-white text-black px-3 py-1 rounded-full">CLAIM VOUCHER ➔</div>
         </div>
 
-        <div onclick="claimCoupon('Instant Forgiveness Immunity')" class="glass-box p-6 rounded-3xl cursor-pointer border-l-4 border-l-cyan-400 hover:bg-white/10 transition transform hover:rotate-2">
-          <div class="text-cyan-400 text-3xl mb-2"><i class="fa-solid fa-shield-cat"></i></div>
-          <h3 class="font-cute font-bold text-white text-lg">Forgiveness Immunity</h3>
-          <p class="text-xs text-gray-400 mt-2">If Danial gets mildly annoying, use this for instant victory.</p>
-          <div class="mt-4 inline-block text-[10px] font-bold bg-cyan-500/30 text-cyan-300 px-3 py-1 rounded-full">CLAIM VOUCHER ➔</div>
+        <div onclick="claimCoupon('Instant Forgiveness Immunity')" class="glass-box p-6 rounded-3xl cursor-pointer border-l-4 border-l-gray-400 hover:bg-white/10 transition transform hover:rotate-1">
+          <div class="text-gray-300 text-2xl mb-2"><i class="fa-solid fa-shield"></i></div>
+          <h3 class="font-bold text-white text-base">Forgiveness Immunity</h3>
+          <p class="text-xs text-gray-400 mt-2 font-light">If Danial gets annoying, use this card for instant victory.</p>
+          <div class="mt-4 inline-block text-[10px] font-mono font-bold bg-white text-black px-3 py-1 rounded-full">CLAIM VOUCHER ➔</div>
         </div>
 
-        <div onclick="claimCoupon('Movie Director Rights')" class="glass-box p-6 rounded-3xl cursor-pointer border-l-4 border-l-purple-500 hover:bg-white/10 transition transform hover:-rotate-2">
-          <div class="text-purple-400 text-3xl mb-2"><i class="fa-solid fa-clapperboard"></i></div>
-          <h3 class="font-cute font-bold text-white text-lg">Director's Cut Pass</h3>
-          <p class="text-xs text-gray-400 mt-2">Deandra picks movie & snacks. Zero complaints allowed!</p>
-          <div class="mt-4 inline-block text-[10px] font-bold bg-purple-500/30 text-purple-300 px-3 py-1 rounded-full">CLAIM VOUCHER ➔</div>
+        <div onclick="claimCoupon('Movie Director Rights')" class="glass-box p-6 rounded-3xl cursor-pointer border-l-4 border-l-white hover:bg-white/10 transition transform hover:-rotate-1">
+          <div class="text-white text-2xl mb-2"><i class="fa-solid fa-film"></i></div>
+          <h3 class="font-bold text-white text-base">Director's Cut Pass</h3>
+          <p class="text-xs text-gray-400 mt-2 font-light">Deandra picks movie & snacks. Zero complaints allowed.</p>
+          <div class="mt-4 inline-block text-[10px] font-mono font-bold bg-white text-black px-3 py-1 rounded-full">CLAIM VOUCHER ➔</div>
         </div>
       </div>
     </section>
 
     <!-- 6. LOVE METER / COMPATIBILITY TEST -->
     <section class="py-16 px-4 max-w-xl mx-auto">
-      <div class="glass-box p-8 rounded-[35px] text-center">
-        <span class="sticker-badge text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Aesthetic Simulator 🧪</span>
-        <h2 class="font-cute text-2xl font-bold text-white mt-3 mb-4">Danial & Deandra Love Calculator</h2>
+      <div class="glass-box p-8 rounded-[35px] text-center border-white/20">
+        <span class="badge-white text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase">COMPATIBILITY TEST 🧪</span>
+        <h2 class="font-serif-title text-xl md:text-2xl font-bold text-white mt-4 mb-4">SOULMATE CALCULATOR</h2>
 
         <div class="space-y-3 mb-6">
-          <input type="text" value="Danial" readonly class="w-full bg-white/5 border border-pink-400/30 rounded-xl py-2 px-4 text-center font-bold text-pink-400 text-sm">
-          <div class="text-xs text-gray-500 font-bold">+</div>
-          <input type="text" value="Deandra" readonly class="w-full bg-white/5 border border-cyan-400/30 rounded-xl py-2 px-4 text-center font-bold text-cyan-400 text-sm">
+          <input type="text" value="Danial" readonly class="w-full bg-white/5 border border-white/20 rounded-xl py-2.5 px-4 text-center font-bold text-white text-sm">
+          <div class="text-xs text-gray-500 font-mono">+</div>
+          <input type="text" value="Deandra" readonly class="w-full bg-white/5 border border-white/20 rounded-xl py-2.5 px-4 text-center font-bold text-white text-sm">
         </div>
 
-        <button onclick="calculateLove()" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 font-cute text-sm text-white font-bold py-3 rounded-xl transition">
-          Calculate Compatibility ✨
+        <button onclick="calculateLove()" class="w-full bg-white hover:bg-gray-200 text-black font-bold text-xs py-3.5 rounded-xl transition tracking-widest uppercase">
+          CALCULATE SCORE ✦
         </button>
 
         <div id="love-meter-result" class="mt-6 hidden">
-          <div class="text-4xl font-cute font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300" id="love-score">999%</div>
-          <p class="text-xs text-emerald-400 font-bold mt-1">STATUS: MATCH MADE IN HEAVEN! 💖</p>
+          <div class="text-4xl font-serif-title font-black text-white" id="love-score">999%</div>
+          <p class="text-xs text-gray-400 font-mono mt-1">STATUS: PERFECT MONOCHROME MATCH 🖤</p>
         </div>
       </div>
     </section>
 
     <!-- 7. OUR STORY TIMELINE -->
     <section class="py-16 px-4 max-w-3xl mx-auto">
-      <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Our Chapter Timeline 📖</h2>
-      <p class="text-center text-xs text-gray-400 mb-10">Milestones of our story</p>
+      <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-center text-white mb-2">OUR CHAPTERS 📖</h2>
+      <p class="text-center text-xs text-gray-400 mb-10 font-mono">Key milestones of our ongoing journey</p>
 
-      <div class="space-y-6 relative before:absolute before:inset-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-pink-500/30">
+      <div class="space-y-6 relative before:absolute before:inset-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-white/20">
         <!-- Milestone 1 -->
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-pink-400 bg-[#07040f] text-pink-400 font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-[#050505] text-white font-mono font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
             1
           </div>
           <div class="glass-box p-5 rounded-2xl w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)]">
-            <span class="text-[10px] font-mono text-pink-400">March 3, 2026</span>
-            <h4 class="font-cute font-bold text-white text-base">The Official Beginning</h4>
-            <p class="text-xs text-gray-400 mt-1">The special day we officially started writing our story together.</p>
+            <span class="text-[10px] font-mono text-gray-400">March 3, 2026</span>
+            <h4 class="font-bold text-white text-base mt-1">The Official Beginning</h4>
+            <p class="text-xs text-gray-400 mt-1 font-light">The special day we started writing our story together.</p>
           </div>
         </div>
 
         <!-- Milestone 2 -->
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-cyan-400 bg-[#07040f] text-cyan-400 font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-[#050505] text-white font-mono font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
             2
           </div>
           <div class="glass-box p-5 rounded-2xl w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)]">
-            <span class="text-[10px] font-mono text-cyan-400">Everyday Memories</span>
-            <h4 class="font-cute font-bold text-white text-base">Uncountable Laughs & Dates</h4>
-            <p class="text-xs text-gray-400 mt-1">From random late-night chats to exploring delicious food spots.</p>
+            <span class="text-[10px] font-mono text-gray-400">Everyday Memories</span>
+            <h4 class="font-bold text-white text-base mt-1">Uncountable Laughs & Dates</h4>
+            <p class="text-xs text-gray-400 mt-1 font-light">From random late-night talks to exploring food spots together.</p>
           </div>
         </div>
       </div>
@@ -388,38 +385,38 @@
 
     <!-- 8. POLAROID PHOTO GALLERY (WITH LIGHTBOX MODAL) -->
     <section id="gallery" class="py-16 px-4 max-w-5xl mx-auto">
-      <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Snapshot Vault 📸</h2>
-      <p class="text-center text-xs text-gray-400 mb-10">Click any photo to view in full screen mode!</p>
+      <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-center text-white mb-2">SNAPSHOT VAULT 📸</h2>
+      <p class="text-center text-xs text-gray-400 mb-10 font-mono">Click any photo to view in full screen lightbox</p>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div onclick="openLightbox('foto1.jpg', 'Cutest Moment #1')" class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 transform -rotate-3 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
-          <img src="foto1.jpg" alt="Photo 1" class="w-full h-44 object-cover rounded-xl mb-2">
-          <p class="text-center font-handwriting text-xl text-pink-300">Cutest moment #1</p>
+        <div onclick="openLightbox('foto1.jpg', 'Cutest Moment #1')" class="bg-zinc-900 border border-white/20 p-3 rounded-2xl transform -rotate-2 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
+          <img src="foto1.jpg" alt="Photo 1" class="w-full h-44 object-cover rounded-xl mb-2 grayscale hover:grayscale-0 transition duration-500">
+          <p class="text-center font-handwriting text-2xl text-white">Cutest moment #1</p>
         </div>
-        <div onclick="openLightbox('foto2.jpg', 'Pure Chaos #2')" class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 transform rotate-3 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
-          <img src="foto2.jpg" alt="Photo 2" class="w-full h-44 object-cover rounded-xl mb-2">
-          <p class="text-center font-handwriting text-xl text-cyan-300">Pure chaos #2</p>
+        <div onclick="openLightbox('foto2.jpg', 'Pure Chaos #2')" class="bg-zinc-900 border border-white/20 p-3 rounded-2xl transform rotate-2 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
+          <img src="foto2.jpg" alt="Photo 2" class="w-full h-44 object-cover rounded-xl mb-2 grayscale hover:grayscale-0 transition duration-500">
+          <p class="text-center font-handwriting text-2xl text-white">Pure chaos #2</p>
         </div>
-        <div onclick="openLightbox('foto3.jpg', 'Favorite Smile #3')" class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 transform -rotate-2 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
-          <img src="foto3.jpg" alt="Photo 3" class="w-full h-44 object-cover rounded-xl mb-2">
-          <p class="text-center font-handwriting text-xl text-purple-300">Favorite smile #3</p>
+        <div onclick="openLightbox('foto3.jpg', 'Favorite Smile #3')" class="bg-zinc-900 border border-white/20 p-3 rounded-2xl transform -rotate-1 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
+          <img src="foto3.jpg" alt="Photo 3" class="w-full h-44 object-cover rounded-xl mb-2 grayscale hover:grayscale-0 transition duration-500">
+          <p class="text-center font-handwriting text-2xl text-white">Favorite smile #3</p>
         </div>
-        <div onclick="openLightbox('foto4.jpg', 'Unfiltered Joy #4')" class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 transform rotate-2 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
-          <img src="foto4.jpg" alt="Photo 4" class="w-full h-44 object-cover rounded-xl mb-2">
-          <p class="text-center font-handwriting text-xl text-yellow-300">Unfiltered joy #4</p>
+        <div onclick="openLightbox('foto4.jpg', 'Unfiltered Joy #4')" class="bg-zinc-900 border border-white/20 p-3 rounded-2xl transform rotate-1 hover:rotate-0 transition duration-300 shadow-xl cursor-pointer">
+          <img src="foto4.jpg" alt="Photo 4" class="w-full h-44 object-cover rounded-xl mb-2 grayscale hover:grayscale-0 transition duration-500">
+          <p class="text-center font-handwriting text-2xl text-white">Unfiltered joy #4</p>
         </div>
       </div>
     </section>
 
     <!-- 9. RUNAWAY BUTTON SECTION -->
     <section class="py-16 px-4 max-w-md mx-auto text-center">
-      <div class="glass-box p-8 rounded-[35px] relative overflow-hidden">
-        <h2 class="font-cute text-xl font-bold text-white mb-6">Deandra, how deeply do you adore Danial? 👀</h2>
+      <div class="glass-box p-8 rounded-[35px] relative overflow-hidden border-white/20">
+        <h2 class="font-serif-title text-lg font-bold text-white mb-6">Deandra, how deeply do you adore Danial? 👀</h2>
         <div class="flex justify-center gap-4 relative min-h-[60px]" id="btn-container">
-          <button id="btn-yes" onclick="sayYes()" class="sticker-badge text-white font-cute font-bold py-3 px-6 rounded-2xl shadow-lg transform hover:scale-110 transition">
-            Love You Tons! 💖
+          <button id="btn-yes" onclick="sayYes()" class="bg-white hover:bg-gray-200 text-black font-bold text-xs py-3 px-6 rounded-2xl shadow-lg transform hover:scale-105 transition tracking-wider uppercase">
+            LOVE YOU TONS 🖤
           </button>
-          <button id="btn-no" onmouseover="runAway()" class="bg-white/10 text-gray-400 font-bold py-3 px-6 rounded-2xl absolute right-0 transition-all duration-200">
+          <button id="btn-no" onmouseover="runAway()" class="bg-white/10 text-gray-400 font-bold text-xs py-3 px-6 rounded-2xl absolute right-0 transition-all duration-200">
             Meh...
           </button>
         </div>
@@ -428,15 +425,15 @@
 
     <!-- 10. INTERACTIVE ENVELOPE LOVE LETTER -->
     <section class="py-16 px-4 max-w-2xl mx-auto text-center">
-      <div class="glass-box glass-neon-pink p-8 md:p-12 rounded-[40px] text-center relative">
-        <div class="text-pink-400 text-5xl mb-4 cursor-pointer hover:scale-110 transition" onclick="triggerHearts()">
+      <div class="glass-box glass-border-white p-8 md:p-12 rounded-[40px] text-center relative">
+        <div class="text-white text-4xl mb-4 cursor-pointer hover:scale-110 transition" onclick="triggerHearts()">
           <i class="fa-solid fa-envelope-open-text animate-bounce"></i>
         </div>
-        <h2 class="font-cute text-3xl font-extrabold text-white mb-4">Transmission for Deandra</h2>
+        <h2 class="font-serif-title text-2xl font-bold text-white mb-4">TRANSMISSION FOR DEANDRA</h2>
         <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6 font-light">
-          Thank you for making life 100x more colorful and unpredictable. Even when I am goofy or annoying, I’m truly blessed to have you in my universe. Let’s keep rocking this story together!
+          Thank you for making life 100x more meaningful and bright. Even when I am goofy or annoying, I’m truly blessed to have you in my universe. Let’s keep rocking this story together!
         </p>
-        <p class="font-handwriting text-4xl text-pink-400">- Yours, Danial -</p>
+        <p class="font-handwriting text-4xl text-white">- Yours, Danial -</p>
       </div>
     </section>
 
@@ -444,46 +441,45 @@
 
   <!-- ================= MODALS & OVERLAYS ================= -->
   <!-- LIGHTBOX MODAL -->
-  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] rounded-2xl shadow-2xl border-2 border-white/20 mb-4">
-    <p id="lightbox-caption" class="font-cute text-lg text-pink-300 font-bold"></p>
-    <p class="text-xs text-gray-500 mt-2">Click anywhere to close</p>
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] rounded-2xl shadow-2xl border border-white/30 mb-4">
+    <p id="lightbox-caption" class="font-serif-title text-base text-white tracking-widest"></p>
+    <p class="text-xs text-gray-500 mt-2 font-mono">Click anywhere to close</p>
   </div>
 
   <!-- RECEIPT VOUCHER MODAL -->
-  <div id="receipt-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="glass-box p-8 rounded-3xl max-w-sm w-full text-center border-2 border-pink-400/50">
-      <div class="text-green-400 text-4xl mb-2"><i class="fa-solid fa-circle-check"></i></div>
-      <h3 class="font-cute text-2xl font-bold text-white mb-1">Voucher Claimed!</h3>
-      <p class="text-xs text-gray-400 mb-4">Official Receipt issued to Deandra</p>
+  <div id="receipt-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-box p-8 rounded-3xl max-w-sm w-full text-center border border-white/40">
+      <div class="text-white text-3xl mb-2"><i class="fa-solid fa-circle-check"></i></div>
+      <h3 class="font-serif-title text-xl font-bold text-white mb-1">VOUCHER CLAIMED</h3>
+      <p class="text-xs text-gray-400 mb-4 font-mono">Official digital receipt issued to Deandra</p>
       
-      <div class="bg-white/5 border border-dashed border-white/20 p-4 rounded-xl text-left text-xs space-y-2 mb-6 font-mono">
-        <div><span class="text-gray-500">ITEM:</span> <span id="receipt-title" class="text-pink-300 font-bold"></span></div>
-        <div><span class="text-gray-500">ISSUER:</span> <span class="text-cyan-300">Danial</span></div>
+      <div class="bg-black/80 border border-white/20 p-4 rounded-xl text-left text-xs space-y-2 mb-6 font-mono">
+        <div><span class="text-gray-500">ITEM:</span> <span id="receipt-title" class="text-white font-bold"></span></div>
+        <div><span class="text-gray-500">ISSUER:</span> <span class="text-gray-300">Danial</span></div>
         <div><span class="text-gray-500">DATE:</span> <span class="text-gray-300" id="receipt-date"></span></div>
-        <div><span class="text-gray-500">STATUS:</span> <span class="text-emerald-400">REDEEMABLE 100%</span></div>
+        <div><span class="text-gray-500">STATUS:</span> <span class="text-white font-bold">REDEEMABLE 100%</span></div>
       </div>
 
-      <button onclick="document.getElementById('receipt-modal').classList.add('hidden')" class="w-full sticker-badge font-cute text-sm text-white font-bold py-2 rounded-xl">
-        Close & Take Screenshot 📸
+      <button onclick="document.getElementById('receipt-modal').classList.add('hidden')" class="w-full bg-white hover:bg-gray-200 text-black font-bold text-xs py-2.5 rounded-xl uppercase tracking-widest">
+        CLOSE & SCREENSHOT 📸
       </button>
     </div>
   </div>
 
-
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // --- WEB AUDIO API (SOUND EFFECTS WITHOUT EXTERNAL MP3) ---
+    // --- WEB AUDIO API SYNTHESIZER ---
     function playSound() {
       try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
-        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15); // A5
-        gain.gain.setValueAtTime(0.1, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+        osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+        osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.15); // G5
+        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
@@ -517,7 +513,6 @@
     const audio = document.getElementById('bg-music');
     const lyricsContainer = document.getElementById('lyrics-container');
 
-    // Backstreet Boys - Shape of My Heart Reff Sample
     const lyricsData = [
       { time: 0, text: "🎶 (Intro Music) 🎶" },
       { time: 60, text: "Looking back on the things I've done" },
@@ -534,11 +529,11 @@
       if (audio.paused) {
         audio.play();
         discIcon.classList.add('animate-spin');
-        playText.innerText = 'Pause Vibe Track';
+        playText.innerText = 'PAUSE TRACK';
       } else {
         audio.pause();
         discIcon.classList.remove('animate-spin');
-        playText.innerText = 'Play Our Vibe Track';
+        playText.innerText = 'PLAY FAVORITE TRACK';
       }
     }
 
@@ -548,7 +543,7 @@
       for (let i = 0; i < lyricsData.length; i++) {
         if (cur >= lyricsData[i].time) text = lyricsData[i].text;
       }
-      lyricsContainer.innerHTML = `<p class="animate-pulse text-pink-300 font-bold">${text}</p>`;
+      lyricsContainer.innerHTML = `<p class="animate-pulse text-white font-semibold">${text}</p>`;
     });
 
     // --- 2. TIME COUNTER & PROGRESS BAR ---
@@ -567,7 +562,6 @@
       document.getElementById('minutes').innerText = minutes >= 0 ? minutes : 0;
       document.getElementById('seconds').innerText = seconds >= 0 ? seconds : 0;
 
-      // Calculate percentage to 365 days
       const pct = Math.min(100, Math.max(0, ((days / 365) * 100))).toFixed(1);
       document.getElementById('year-progress-percent').innerText = `${pct}%`;
       document.getElementById('year-progress-bar').style.width = `${pct}%`;
@@ -592,7 +586,7 @@
       setTimeout(() => {
         isSpinning = false;
         const prize = wheelPrizes[Math.floor(Math.random() * wheelPrizes.length)];
-        wheelResult.innerText = `YOU WON: ${prize}! 🎉`;
+        wheelResult.innerText = `REWARD: ${prize} ✦`;
         wheelResult.classList.remove('hidden');
         triggerHearts();
       }, 4000);
@@ -626,7 +620,7 @@
     }
 
     // --- 7. RUNAWAY BUTTON ---
-    const noBtnMessages = ['Nice try! 😜', 'Nope! 🚀', 'Can\'t click me!', 'Too slow! 💨', 'Danial only! ❤️'];
+    const noBtnMessages = ['Nice try! 😜', 'Nope! 🚀', 'Can\'t click me!', 'Too slow! 💨', 'Danial only! 🖤'];
     let msgIdx = 0;
     function runAway() {
       playSound();
@@ -640,17 +634,17 @@
 
     function sayYes() {
       playSound();
-      alert('Aaaaa Danial loves Deandra so much too! 🥰💖');
+      alert('Aaaaa Danial loves Deandra so much too! 🥰🖤');
       triggerHearts();
     }
 
-    // --- 8. FLOATING PARTICLES ---
+    // --- 8. MONOCHROME PARTICLES ---
     function triggerHearts() {
       for (let i = 0; i < 35; i++) {
         setTimeout(() => {
           const heart = document.createElement('div');
-          heart.className = 'heart-particle font-cute text-2xl';
-          heart.innerText = ['💖', '✨', '🛸', '🥰', '👾', '🌸'][Math.floor(Math.random() * 6)];
+          heart.className = 'heart-particle text-xl font-mono';
+          heart.innerText = ['🖤', '🤍', '✨', '🪩', '✦', '💬'][Math.floor(Math.random() * 6)];
           heart.style.left = Math.random() * 100 + 'vw';
           heart.style.bottom = '0';
           document.body.appendChild(heart);
