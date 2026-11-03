@@ -3,32 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deandra's Mega Aesthetic Universe 🌀✨</title>
+  <title>Deandra's Ultimate Aesthetic Universe 🌀✨</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Space+Grotesk:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ==========================================================================
-       1. ROOT VARIABLES & THEMES
-       ========================================================================== */
-    :root {
-      --bg-dark: #06030e;
-      --pink-neon: #ff007f;
-      --cyan-neon: #00f0ff;
-      --purple-neon: #9d4edd;
-      --yellow-neon: #ffea00;
-      --glass-bg: rgba(255, 255, 255, 0.04);
-      --glass-border: rgba(255, 255, 255, 0.12);
-    }
-
     body {
       font-family: 'Space Grotesk', sans-serif;
-      background-color: var(--bg-dark);
+      background: #07040f;
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(255, 0, 127, 0.22) 0px, transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(0, 240, 255, 0.18) 0px, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.15) 0px, transparent 65%);
+        radial-gradient(circle at 10% 10%, rgba(255, 0, 128, 0.25) 0px, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(0, 240, 255, 0.2) 0px, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.15) 0px, transparent 60%);
       color: #f8fafc;
       overflow-x: hidden;
     }
@@ -36,101 +22,50 @@
     .font-cute { font-family: 'Fredoka', sans-serif; }
     .font-handwriting { font-family: 'Caveat', cursive; }
 
-    /* ==========================================================================
-       2. GLASSMORPHISM & UI COMPONENT STYLES
-       ========================================================================== */
+    /* Glassmorphism Styles */
     .glass-box {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     }
     
     .glass-neon-pink {
-      border: 2px solid rgba(255, 0, 127, 0.45);
-      box-shadow: 0 0 30px rgba(255, 0, 127, 0.25);
+      border: 2px solid rgba(255, 0, 128, 0.4);
+      box-shadow: 0 0 25px rgba(255, 0, 128, 0.2);
     }
 
     .glass-neon-cyan {
-      border: 2px solid rgba(0, 240, 255, 0.45);
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
-    }
-
-    .glass-neon-purple {
-      border: 2px solid rgba(157, 78, 221, 0.45);
-      box-shadow: 0 0 30px rgba(157, 78, 221, 0.25);
+      border: 2px solid rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
     }
 
     .sticker-badge {
-      background: linear-gradient(135deg, var(--pink-neon), var(--purple-neon));
-      box-shadow: 3px 3px 0px var(--cyan-neon);
-    }
-
-    .sticker-badge-cyan {
-      background: linear-gradient(135deg, var(--cyan-neon), #0077ff);
-      box-shadow: 3px 3px 0px var(--pink-neon);
-      color: #000;
+      background: linear-gradient(135deg, #ff007f, #7928ca);
+      box-shadow: 3px 3px 0px #00f0ff;
     }
 
     .sticker-badge-yellow {
-      background: linear-gradient(135deg, var(--yellow-neon), #ff0055);
-      box-shadow: -3px 3px 0px var(--pink-neon);
+      background: linear-gradient(135deg, #ffea00, #ff0055);
+      box-shadow: -3px 3px 0px #ff007f;
       color: #000;
     }
 
-    /* ==========================================================================
-       3. ANIMATIONS & KEYFRAMES
-       ========================================================================== */
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(2deg); }
+    /* Flip Card Animation */
+    .flip-card {
+      perspective: 1000px;
     }
-    .animate-float { animation: floatSlow 4.5s ease-in-out infinite; }
-
-    @keyframes pulseGlow {
-      0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.4)); }
-      50% { filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.8)); }
-    }
-    .animate-glow { animation: pulseGlow 3s infinite; }
-
-    @keyframes shakeError {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-12px); }
-      40%, 80% { transform: translateX(12px); }
-    }
-    .shake-box { animation: shakeError 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
-
-    /* Equalizer Sound Visualizer Bars */
-    .eq-bar {
-      width: 4px;
-      height: 16px;
-      background-color: var(--pink-neon);
-      border-radius: 2px;
-      animation: eqBounce 1.2s ease-in-out infinite alternate;
-    }
-    .eq-bar:nth-child(2) { animation-delay: 0.2s; background-color: var(--cyan-neon); }
-    .eq-bar:nth-child(3) { animation-delay: 0.4s; background-color: var(--yellow-neon); }
-    .eq-bar:nth-child(4) { animation-delay: 0.1s; background-color: var(--purple-neon); }
-    .eq-bar:nth-child(5) { animation-delay: 0.5s; background-color: var(--pink-neon); }
-
-    @keyframes eqBounce {
-      0% { height: 6px; }
-      100% { height: 28px; }
-    }
-
-    /* ==========================================================================
-       4. FLIP CARD STYLES
-       ========================================================================== */
-    .flip-card { perspective: 1000px; }
     .flip-card-inner {
       position: relative;
       width: 100%;
       height: 100%;
-      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+      transition: transform 0.6s;
       transform-style: preserve-3d;
     }
-    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
     .flip-card-front, .flip-card-back {
       position: absolute;
       width: 100%;
@@ -138,114 +73,101 @@
       backface-visibility: hidden;
       border-radius: 1.5rem;
     }
-    .flip-card-back { transform: rotateY(180deg); }
-
-    /* ==========================================================================
-       5. ENVELOPE ANIMATION
-       ========================================================================== */
-    .envelope-wrapper {
-      perspective: 1000px;
-    }
-    .envelope-flap {
-      transform-origin: top;
-      transition: transform 0.6s ease;
-    }
-    .envelope-wrapper.open .envelope-flap {
-      transform: rotateX(180deg);
+    .flip-card-back {
+      transform: rotateY(180deg);
     }
 
-    /* Custom Scrollbars */
+    /* Floating Keyframes */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+    .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+
+    /* Particles */
+    .heart-particle {
+      position: fixed;
+      pointer-events: none;
+      animation: floatUp 3.5s ease-out forwards;
+      z-index: 99;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.3) rotate(360deg); opacity: 0; }
+    }
+
+    /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-dark); }
-    ::-webkit-scrollbar-thumb { background: var(--pink-neon); border-radius: 4px; }
+    ::-webkit-scrollbar-track { background: #07040f; }
+    ::-webkit-scrollbar-thumb { background: #ff007f; border-radius: 4px; }
 
+    /* Hide Number Spinners */
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   </style>
 </head>
 <body class="antialiased min-h-screen relative pb-24 selection:bg-pink-500 selection:text-white">
 
-  <!-- Audio Element -->
-  <audio id="bg-music" src="shapeofmyheart.mp3" preload="auto"></audio>
+  <!-- Audio Player File -->
+  <audio id="bg-music" src="shapeofmyheart.mp3"></audio>
 
-  <!-- Dynamic Ambient Canvas Particles -->
-  <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+  <!-- Canvas Floating Hearts Container -->
+  <div id="hearts-container"></div>
 
-  <!-- Particle Burst Overlay Container -->
-  <div id="particle-burst-container"></div>
-
-  <!-- ==========================================================================
-     SECURITY GATEKEEPER PASSCODE SCREEN
-     ========================================================================== -->
-  <section id="gatekeeper" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#06030e]/95 backdrop-blur-2xl transition-all duration-700">
-    <div id="gatekeeper-box" class="glass-box glass-neon-pink p-8 md:p-10 max-w-md w-full text-center rounded-[40px] relative animate-float">
+  <!-- ================= 0. SECURITY GATEKEEPER ================= -->
+  <section id="gatekeeper" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#07040f]/95 backdrop-blur-xl transition-all duration-700">
+    <div id="gatekeeper-box" class="glass-box glass-neon-pink p-8 md:p-10 max-w-md w-full text-center rounded-[35px] relative animate-float">
       
-      <div class="sticker-badge inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-white mb-5 -rotate-2">
-        🔒 CLASSIFIED USER REALM
+      <div class="sticker-badge inline-block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white mb-4 -rotate-3">
+        🔒 CLASSIFIED AREA
       </div>
 
       <h1 class="font-cute text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 mb-2">
         Who goes there?
       </h1>
-      <p class="text-xs text-gray-400 mb-6 font-medium">
-        This aesthetic zone is restricted to Deandra. Enter the secret pin below (Hint: Our Anniversary Date).
+      <p class="text-xs text-gray-400 mb-6">
+        This aesthetic space is restricted to Deandra. Enter the passkey (Hint: Our Anniversary Date).
       </p>
 
-      <!-- Pin Keypad Display -->
-      <div class="relative mb-6">
-        <input type="password" id="pass-input" readonly placeholder="• • • • • •" class="w-full bg-white/10 border-2 border-pink-400/50 rounded-2xl py-3.5 px-4 text-center text-2xl font-bold tracking-widest text-pink-300 focus:outline-none focus:border-cyan-400 transition placeholder:text-gray-600">
+      <div class="relative mb-4">
+        <input type="password" id="pass-input" placeholder="e.g. 030326" class="w-full bg-white/10 border-2 border-pink-400/50 rounded-2xl py-3 px-4 text-center text-xl font-bold tracking-widest text-pink-300 focus:outline-none focus:border-cyan-400 transition placeholder:text-gray-600 placeholder:text-sm placeholder:tracking-normal">
       </div>
 
-      <!-- Interactive Numpad Buttons -->
-      <div class="grid grid-cols-3 gap-3 mb-6 font-cute max-w-xs mx-auto">
-        <button onclick="pressPin('1')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">1</button>
-        <button onclick="pressPin('2')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">2</button>
-        <button onclick="pressPin('3')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">3</button>
-        <button onclick="pressPin('4')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">4</button>
-        <button onclick="pressPin('5')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">5</button>
-        <button onclick="pressPin('6')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">6</button>
-        <button onclick="pressPin('7')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">7</button>
-        <button onclick="pressPin('8')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">8</button>
-        <button onclick="pressPin('9')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">9</button>
-        <button onclick="clearPin()" class="bg-rose-500/20 hover:bg-rose-500/40 text-rose-300 border border-rose-500/30 py-3 rounded-2xl text-xs font-bold transition transform active:scale-90">DEL</button>
-        <button onclick="pressPin('0')" class="bg-white/5 hover:bg-white/20 border border-white/10 py-3 rounded-2xl text-lg font-bold transition transform active:scale-90">0</button>
-        <button onclick="checkPassword()" class="bg-emerald-500/20 hover:bg-emerald-500/40 text-emerald-300 border border-emerald-500/30 py-3 rounded-2xl text-xs font-bold transition transform active:scale-90">GO</button>
-      </div>
+      <button id="pass-btn" onclick="checkPassword()" class="w-full sticker-badge font-cute text-lg text-white font-bold py-3 rounded-2xl transform active:scale-95 transition hover:brightness-110">
+        Unlock Universe 🚀
+      </button>
 
-      <p id="pass-error" class="text-xs text-rose-400 font-semibold hidden">
+      <p id="pass-error" class="text-xs text-rose-400 mt-3 font-semibold hidden">
         Oopsie! Wrong password, try again! 🤪
       </p>
     </div>
   </section>
 
-  <!-- ==========================================================================
-     MAIN APPLICATION CONTENT (UNLOCKED AFTER PASSCODE)
-     ========================================================================== -->
-  <div id="main-content" class="hidden relative z-10">
+  <!-- ================= MAIN WEBSITE CONTENT ================= -->
+  <div id="main-content" class="hidden">
 
     <!-- NAVIGATION BAR -->
-    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-40 glass-box px-6 py-3 rounded-full border border-white/20 flex items-center gap-5 text-xs font-cute text-gray-300 shadow-2xl">
-      <a href="#hero" class="hover:text-pink-400 transition flex items-center gap-1"><i class="fa-solid fa-sparkles"></i> Vibe</a>
-      <a href="#timer" class="hover:text-cyan-400 transition flex items-center gap-1"><i class="fa-solid fa-clock"></i> Timer</a>
-      <a href="#wheel" class="hover:text-purple-400 transition flex items-center gap-1"><i class="fa-solid fa-dharmachakra"></i> Spin</a>
-      <a href="#quiz" class="hover:text-yellow-400 transition flex items-center gap-1"><i class="fa-solid fa-brain"></i> Quiz</a>
-      <a href="#reasons" class="hover:text-pink-400 transition flex items-center gap-1"><i class="fa-solid fa-heart"></i> Cards</a>
-      <a href="#gallery" class="hover:text-cyan-400 transition flex items-center gap-1"><i class="fa-solid fa-images"></i> Vault</a>
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-40 glass-box px-6 py-3 rounded-full border border-white/20 flex items-center gap-6 text-xs font-cute text-gray-300">
+      <a href="#hero" class="hover:text-pink-400 transition">Vibe</a>
+      <a href="#timer" class="hover:text-cyan-400 transition">Timer</a>
+      <a href="#wheel" class="hover:text-purple-400 transition">Spin</a>
+      <a href="#reasons" class="hover:text-pink-400 transition">Reasons</a>
+      <a href="#coupons" class="hover:text-yellow-400 transition">Coupons</a>
+      <a href="#gallery" class="hover:text-cyan-400 transition">Gallery</a>
     </nav>
 
-    <!-- 1. HERO SECTION & MUSIC PLAYER -->
-    <section id="hero" class="min-h-screen flex flex-col items-center justify-center p-4 relative pt-24">
-      
+    <!-- 1. HERO & MUSIC PLAYER -->
+    <section id="hero" class="min-h-screen flex flex-col items-center justify-center p-4 relative pt-20">
       <!-- Floating Badges -->
-      <div class="absolute top-24 left-6 md:left-20 sticker-badge-yellow font-cute text-xs font-extrabold px-3 py-1.5 rounded-xl -rotate-12 animate-float">
+      <div class="absolute top-24 left-6 md:left-20 sticker-badge-yellow font-cute text-xs font-extrabold px-3 py-1 rounded-lg -rotate-12 animate-float">
         STRICTLY BUCIN 👾
       </div>
-      <div class="absolute top-28 right-6 md:right-24 sticker-badge text-white font-cute text-xs font-extrabold px-3 py-1.5 rounded-xl rotate-12 animate-float" style="animation-delay: 1.5s;">
+      <div class="absolute top-28 right-6 md:right-24 sticker-badge text-white font-cute text-xs font-extrabold px-3 py-1 rounded-lg rotate-12 animate-float" style="animation-delay: 1.5s;">
         100% HANDMADE 💖
       </div>
 
-      <div class="glass-box glass-neon-pink p-8 md:p-14 max-w-2xl w-full text-center rounded-[45px] relative z-10 my-8">
-        <h1 class="font-cute text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-300 mb-3 animate-glow">
+      <div class="glass-box glass-neon-pink p-8 md:p-12 max-w-2xl w-full text-center rounded-[40px] relative z-10 my-8">
+        <h1 class="font-cute text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-300 mb-3">
           Hey Deandra! ✨
         </h1>
         <p class="text-gray-300 text-sm md:text-base font-medium mb-8 leading-relaxed">
@@ -254,17 +176,7 @@
 
         <!-- Music Controller Box -->
         <div class="glass-box p-6 rounded-3xl mb-4 text-center relative overflow-hidden border-cyan-400/30">
-          
-          <!-- Animated Sound Equalizer Visualizer UI -->
-          <div id="eq-visualizer" class="flex justify-center items-end gap-1.5 mb-4 h-8 opacity-40 transition-opacity">
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-          </div>
-
-          <button id="play-btn" onclick="toggleMusic()" class="w-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-cute font-bold text-base py-3.5 px-6 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
+          <button id="play-btn" onclick="toggleMusic()" class="w-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-cute font-bold text-base py-3 px-6 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
             <i class="fa-solid fa-compact-disc text-xl" id="disc-icon"></i>
             <span id="play-text">Play Our Vibe Track</span>
           </button>
@@ -278,14 +190,13 @@
 
     <!-- 2. TIME COUNTER & ANNIVERSARY MILESTONE -->
     <section id="timer" class="py-16 px-4 max-w-4xl mx-auto">
-      <div class="glass-box glass-neon-cyan p-8 md:p-12 rounded-[40px] text-center relative">
-        <div class="sticker-badge-yellow inline-block px-3.5 py-1 rounded-md text-xs font-bold uppercase mb-3 rotate-2">
+      <div class="glass-box glass-neon-cyan p-8 rounded-[35px] text-center relative">
+        <div class="sticker-badge-yellow inline-block px-3 py-1 rounded-md text-xs font-bold uppercase mb-3 rotate-2">
           Time Continuum ⏳
         </div>
         <h2 class="font-cute text-3xl font-extrabold text-white mb-1">Days We've Been Glued Together</h2>
         <p class="text-xs text-cyan-300 mb-8 font-mono">Started on March 3, 2026 (03-03-2026)</p>
 
-        <!-- Live Clock Cards Grid -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div class="bg-pink-500/10 border-2 border-pink-400/30 p-5 rounded-[30px_10px_30px_10px] transform hover:rotate-3 transition">
             <span id="days" class="font-cute text-4xl font-extrabold text-pink-400 block">0</span>
@@ -306,13 +217,13 @@
         </div>
 
         <!-- Progress Bar to 1st Year -->
-        <div class="bg-white/5 p-5 rounded-2xl border border-white/10">
+        <div class="bg-white/5 p-4 rounded-2xl border border-white/10">
           <div class="flex justify-between text-xs text-gray-300 mb-2 font-cute">
             <span>Year 1 Goal Progress</span>
-            <span id="year-progress-percent" class="text-pink-400 font-bold">0%</span>
+            <span id="year-progress-percent">0%</span>
           </div>
-          <div class="w-full bg-gray-800/80 rounded-full h-3.5 overflow-hidden p-0.5 border border-white/10">
-            <div id="year-progress-bar" class="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 h-full w-0 rounded-full transition-all duration-1000"></div>
+          <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+            <div id="year-progress-bar" class="bg-gradient-to-r from-pink-500 to-cyan-400 h-full w-0 transition-all duration-1000"></div>
           </div>
         </div>
       </div>
@@ -320,141 +231,78 @@
 
     <!-- 3. SPIN THE LOVE WHEEL GAME -->
     <section id="wheel" class="py-16 px-4 max-w-xl mx-auto text-center">
-      <div class="glass-box p-8 rounded-[40px] relative">
+      <div class="glass-box p-8 rounded-[35px] relative">
         <span class="sticker-badge text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Interactive Lucky Draw 🎡</span>
         <h2 class="font-cute text-3xl font-extrabold text-white mt-3 mb-2">Spin the Love Wheel!</h2>
         <p class="text-xs text-gray-400 mb-6">Spin to see what prize or date Danial owes you today.</p>
 
         <div class="relative w-64 h-64 mx-auto mb-6">
+          <!-- Pointer -->
           <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 text-yellow-400 text-3xl drop-shadow">
             <i class="fa-solid fa-caret-down"></i>
           </div>
+          <!-- Wheel Circle -->
           <div id="wheel-disc" class="w-full h-full rounded-full border-4 border-pink-400/50 bg-gradient-to-tr from-pink-600 via-purple-600 to-cyan-500 flex items-center justify-center text-white font-cute font-bold text-sm shadow-2xl transition-transform duration-[4000ms] cubic-bezier(0.15, 0.9, 0.15, 1)">
-            <span id="wheel-text" class="p-4 bg-black/50 rounded-full border border-white/20 shadow-inner">TAP SPIN!</span>
+            <span id="wheel-text" class="p-4 bg-black/40 rounded-full border border-white/20">TAP SPIN!</span>
           </div>
         </div>
 
-        <button onclick="spinWheel()" id="spin-btn" class="sticker-badge font-cute text-base text-white font-bold py-3.5 px-8 rounded-2xl transform active:scale-95 transition hover:brightness-110">
+        <button onclick="spinWheel()" id="spin-btn" class="sticker-badge font-cute text-base text-white font-bold py-3 px-8 rounded-2xl transform active:scale-95 transition">
           SPIN NOW! 🎯
         </button>
         <p id="wheel-result" class="text-sm font-bold text-pink-300 mt-4 hidden animate-bounce"></p>
       </div>
     </section>
 
-    <!-- 4. MULTI-QUESTION LOVE QUIZ -->
-    <section id="quiz" class="py-16 px-4 max-w-xl mx-auto">
-      <div class="glass-box glass-neon-purple p-8 rounded-[40px] text-center relative">
-        <span class="sticker-badge-cyan text-xs font-bold px-3 py-1 rounded-full uppercase">Soulmate Test 🧠</span>
-        <h2 class="font-cute text-2xl font-bold text-white mt-3 mb-2">The Official Cute Interrogation</h2>
-        <p class="text-xs text-gray-400 mb-6">Answer these 3 questions to unlock your compatibility score!</p>
-
-        <div id="quiz-container">
-          <div id="quiz-card" class="bg-white/5 border border-white/10 p-6 rounded-3xl mb-4">
-            <span id="quiz-step" class="text-[10px] font-mono text-cyan-300 block mb-1">QUESTION 1 OF 3</span>
-            <p id="quiz-question-text" class="font-cute text-lg text-white font-bold mb-4">Who is officially the clingiest human in this relationship?</p>
-            
-            <div id="quiz-options" class="grid grid-cols-1 gap-3">
-              <!-- Options populated by JS -->
-            </div>
-          </div>
-        </div>
-
-        <div id="quiz-success" class="hidden bg-emerald-500/20 border border-emerald-500/40 p-6 rounded-3xl animate-bounce">
-          <i class="fa-solid fa-trophy text-4xl text-yellow-400 mb-2"></i>
-          <h3 class="font-cute text-xl font-bold text-white">100% PERFECT MATCH!</h3>
-          <p class="text-xs text-emerald-300 mt-1">You unlocked +99999 Love Points with Danial! 💖</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. REASONS WHY I LOVE YOU (EXPANDED FLIP CARDS) -->
-    <section id="reasons" class="py-16 px-4 max-w-5xl mx-auto">
+    <!-- 4. REASONS WHY I LOVE YOU (FLIP CARDS) -->
+    <section id="reasons" class="py-16 px-4 max-w-4xl mx-auto">
       <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Why Deandra is Special 💌</h2>
       <p class="text-center text-xs text-gray-400 mb-10">Click any card to flip and reveal a secret reason!</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Card 1 -->
-        <div class="flip-card h-52 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound('pop');">
+        <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
           <div class="flip-card-inner">
-            <div class="flip-card-front glass-box glass-neon-pink flex flex-col items-center justify-center p-5 text-center">
-              <i class="fa-solid fa-heart text-3xl text-pink-400 mb-3"></i>
-              <p class="font-cute font-bold text-white text-lg">Reason #1</p>
+            <div class="flip-card-front glass-box glass-neon-pink flex flex-col items-center justify-center p-4">
+              <i class="fa-solid fa-heart text-3xl text-pink-400 mb-2"></i>
+              <p class="font-cute font-bold text-white">Reason #1</p>
               <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
             </div>
-            <div class="flip-card-back bg-gradient-to-br from-pink-600 to-purple-700 p-6 flex items-center justify-center text-center rounded-3xl">
+            <div class="flip-card-back bg-gradient-to-br from-pink-600 to-purple-700 p-6 flex items-center justify-center text-center">
               <p class="text-xs md:text-sm text-white font-medium">Your smile instantly brightens up even my worst days!</p>
             </div>
           </div>
         </div>
         <!-- Card 2 -->
-        <div class="flip-card h-52 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound('pop');">
+        <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
           <div class="flip-card-inner">
-            <div class="flip-card-front glass-box glass-neon-cyan flex flex-col items-center justify-center p-5 text-center">
-              <i class="fa-solid fa-face-laugh-beam text-3xl text-cyan-400 mb-3"></i>
-              <p class="font-cute font-bold text-white text-lg">Reason #2</p>
+            <div class="flip-card-front glass-box glass-neon-cyan flex flex-col items-center justify-center p-4">
+              <i class="fa-solid fa-face-laugh-beam text-3xl text-cyan-400 mb-2"></i>
+              <p class="font-cute font-bold text-white">Reason #2</p>
               <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
             </div>
-            <div class="flip-card-back bg-gradient-to-br from-cyan-600 to-blue-700 p-6 flex items-center justify-center text-center rounded-3xl">
+            <div class="flip-card-back bg-gradient-to-br from-cyan-600 to-blue-700 p-6 flex items-center justify-center text-center">
               <p class="text-xs md:text-sm text-white font-medium">You match my weird humor and chaotic energy perfectly.</p>
             </div>
           </div>
         </div>
         <!-- Card 3 -->
-        <div class="flip-card h-52 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound('pop');">
+        <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound();">
           <div class="flip-card-inner">
-            <div class="flip-card-front glass-box border border-yellow-400/40 flex flex-col items-center justify-center p-5 text-center">
-              <i class="fa-solid fa-star text-3xl text-yellow-400 mb-3"></i>
-              <p class="font-cute font-bold text-white text-lg">Reason #3</p>
+            <div class="flip-card-front glass-box border border-yellow-400/40 flex flex-col items-center justify-center p-4">
+              <i class="fa-solid fa-star text-3xl text-yellow-400 mb-2"></i>
+              <p class="font-cute font-bold text-white">Reason #3</p>
               <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
             </div>
-            <div class="flip-card-back bg-gradient-to-br from-yellow-500 to-rose-600 p-6 flex items-center justify-center text-center rounded-3xl">
+            <div class="flip-card-back bg-gradient-to-br from-yellow-500 to-rose-600 p-6 flex items-center justify-center text-center">
               <p class="text-xs md:text-sm text-white font-medium">Being around you feels like home, no matter where we are.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Card 4 -->
-        <div class="flip-card h-52 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound('pop');">
-          <div class="flip-card-inner">
-            <div class="flip-card-front glass-box border border-purple-400/40 flex flex-col items-center justify-center p-5 text-center">
-              <i class="fa-solid fa-wand-magic-sparkles text-3xl text-purple-400 mb-3"></i>
-              <p class="font-cute font-bold text-white text-lg">Reason #4</p>
-              <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
-            </div>
-            <div class="flip-card-back bg-gradient-to-br from-purple-600 to-indigo-800 p-6 flex items-center justify-center text-center rounded-3xl">
-              <p class="text-xs md:text-sm text-white font-medium">You listen patiently even when I ramble about non-sense.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Card 5 -->
-        <div class="flip-card h-52 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound('pop');">
-          <div class="flip-card-inner">
-            <div class="flip-card-front glass-box border border-emerald-400/40 flex flex-col items-center justify-center p-5 text-center">
-              <i class="fa-solid fa-gem text-3xl text-emerald-400 mb-3"></i>
-              <p class="font-cute font-bold text-white text-lg">Reason #5</p>
-              <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
-            </div>
-            <div class="flip-card-back bg-gradient-to-br from-emerald-600 to-teal-800 p-6 flex items-center justify-center text-center rounded-3xl">
-              <p class="text-xs md:text-sm text-white font-medium">You inspire me to be a better version of myself every day.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Card 6 -->
-        <div class="flip-card h-52 cursor-pointer" onclick="this.classList.toggle('flipped'); playSound('pop');">
-          <div class="flip-card-inner">
-            <div class="flip-card-front glass-box glass-neon-pink flex flex-col items-center justify-center p-5 text-center">
-              <i class="fa-solid fa-infinity text-3xl text-pink-400 mb-3"></i>
-              <p class="font-cute font-bold text-white text-lg">Reason #6</p>
-              <span class="text-[10px] text-gray-400 mt-1">Tap to flip ➔</span>
-            </div>
-            <div class="flip-card-back bg-gradient-to-br from-rose-600 to-pink-700 p-6 flex items-center justify-center text-center rounded-3xl">
-              <p class="text-xs md:text-sm text-white font-medium">Because you are uniquely YOU, and I wouldn't change a thing!</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 6. INTERACTIVE VOUCHERS + RECEIPT GENERATOR -->
+    <!-- 5. INTERACTIVE COUPONS + RECEIPT MODAL -->
     <section id="coupons" class="py-16 px-4 max-w-4xl mx-auto">
       <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Claimable Love Vouchers 🎟️</h2>
       <p class="text-center text-xs text-gray-400 mb-10">Tap any voucher to generate an official digital claim receipt!</p>
@@ -483,38 +331,38 @@
       </div>
     </section>
 
-    <!-- 7. LOVE CALCULATOR / COMPATIBILITY ANALYZER -->
+    <!-- 6. LOVE METER / COMPATIBILITY TEST -->
     <section class="py-16 px-4 max-w-xl mx-auto">
-      <div class="glass-box p-8 rounded-[40px] text-center">
+      <div class="glass-box p-8 rounded-[35px] text-center">
         <span class="sticker-badge text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Aesthetic Simulator 🧪</span>
         <h2 class="font-cute text-2xl font-bold text-white mt-3 mb-4">Danial & Deandra Love Calculator</h2>
 
         <div class="space-y-3 mb-6">
-          <input type="text" value="Danial" readonly class="w-full bg-white/5 border border-pink-400/30 rounded-xl py-2.5 px-4 text-center font-bold text-pink-400 text-sm">
+          <input type="text" value="Danial" readonly class="w-full bg-white/5 border border-pink-400/30 rounded-xl py-2 px-4 text-center font-bold text-pink-400 text-sm">
           <div class="text-xs text-gray-500 font-bold">+</div>
-          <input type="text" value="Deandra" readonly class="w-full bg-white/5 border border-cyan-400/30 rounded-xl py-2.5 px-4 text-center font-bold text-cyan-400 text-sm">
+          <input type="text" value="Deandra" readonly class="w-full bg-white/5 border border-cyan-400/30 rounded-xl py-2 px-4 text-center font-bold text-cyan-400 text-sm">
         </div>
 
-        <button onclick="calculateLove()" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 font-cute text-sm text-white font-bold py-3.5 rounded-xl transition shadow-lg">
+        <button onclick="calculateLove()" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 font-cute text-sm text-white font-bold py-3 rounded-xl transition">
           Calculate Compatibility ✨
         </button>
 
         <div id="love-meter-result" class="mt-6 hidden">
-          <div class="text-4xl font-cute font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300 animate-pulse" id="love-score">999%</div>
+          <div class="text-4xl font-cute font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300" id="love-score">999%</div>
           <p class="text-xs text-emerald-400 font-bold mt-1">STATUS: MATCH MADE IN HEAVEN! 💖</p>
         </div>
       </div>
     </section>
 
-    <!-- 8. OUR CHAPTER TIMELINE (EXPANDED MILESTONES) -->
+    <!-- 7. OUR STORY TIMELINE -->
     <section class="py-16 px-4 max-w-3xl mx-auto">
       <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Our Chapter Timeline 📖</h2>
-      <p class="text-center text-xs text-gray-400 mb-12">Milestones of our story</p>
+      <p class="text-center text-xs text-gray-400 mb-10">Milestones of our story</p>
 
       <div class="space-y-6 relative before:absolute before:inset-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-pink-500/30">
         <!-- Milestone 1 -->
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-pink-400 bg-[#06030e] text-pink-400 font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-pink-400 bg-[#07040f] text-pink-400 font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
             1
           </div>
           <div class="glass-box p-5 rounded-2xl w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)]">
@@ -526,31 +374,19 @@
 
         <!-- Milestone 2 -->
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-cyan-400 bg-[#06030e] text-cyan-400 font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-cyan-400 bg-[#07040f] text-cyan-400 font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
             2
           </div>
           <div class="glass-box p-5 rounded-2xl w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)]">
-            <span class="text-[10px] font-mono text-cyan-400">Uncountable Dates</span>
-            <h4 class="font-cute font-bold text-white text-base">Foodie Explorations</h4>
+            <span class="text-[10px] font-mono text-cyan-400">Everyday Memories</span>
+            <h4 class="font-cute font-bold text-white text-base">Uncountable Laughs & Dates</h4>
             <p class="text-xs text-gray-400 mt-1">From random late-night chats to exploring delicious food spots.</p>
-          </div>
-        </div>
-
-        <!-- Milestone 3 -->
-        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-yellow-400 bg-[#06030e] text-yellow-400 font-bold text-xs z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-            3
-          </div>
-          <div class="glass-box p-5 rounded-2xl w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)]">
-            <span class="text-[10px] font-mono text-yellow-400">Forever Ahead</span>
-            <h4 class="font-cute font-bold text-white text-base">Endless Adventures</h4>
-            <p class="text-xs text-gray-400 mt-1">Ready to create thousands of new memories in the future!</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 9. SNAPSHOT VAULT GALLERY & LIGHTBOX -->
+    <!-- 8. POLAROID PHOTO GALLERY (WITH LIGHTBOX MODAL) -->
     <section id="gallery" class="py-16 px-4 max-w-5xl mx-auto">
       <h2 class="font-cute text-3xl font-extrabold text-center text-white mb-2">Snapshot Vault 📸</h2>
       <p class="text-center text-xs text-gray-400 mb-10">Click any photo to view in full screen mode!</p>
@@ -575,9 +411,9 @@
       </div>
     </section>
 
-    <!-- 10. RUNAWAY BUTTON MATRIX -->
+    <!-- 9. RUNAWAY BUTTON SECTION -->
     <section class="py-16 px-4 max-w-md mx-auto text-center">
-      <div class="glass-box p-8 rounded-[40px] relative overflow-hidden">
+      <div class="glass-box p-8 rounded-[35px] relative overflow-hidden">
         <h2 class="font-cute text-xl font-bold text-white mb-6">Deandra, how deeply do you adore Danial? 👀</h2>
         <div class="flex justify-center gap-4 relative min-h-[60px]" id="btn-container">
           <button id="btn-yes" onclick="sayYes()" class="sticker-badge text-white font-cute font-bold py-3 px-6 rounded-2xl shadow-lg transform hover:scale-110 transition">
@@ -590,10 +426,10 @@
       </div>
     </section>
 
-    <!-- 11. INTERACTIVE ENVELOPE LOVE LETTER -->
+    <!-- 10. INTERACTIVE ENVELOPE LOVE LETTER -->
     <section class="py-16 px-4 max-w-2xl mx-auto text-center">
-      <div class="glass-box glass-neon-pink p-8 md:p-12 rounded-[45px] text-center relative">
-        <div class="text-pink-400 text-5xl mb-4 cursor-pointer hover:scale-110 transition" onclick="triggerBurst()">
+      <div class="glass-box glass-neon-pink p-8 md:p-12 rounded-[40px] text-center relative">
+        <div class="text-pink-400 text-5xl mb-4 cursor-pointer hover:scale-110 transition" onclick="triggerHearts()">
           <i class="fa-solid fa-envelope-open-text animate-bounce"></i>
         </div>
         <h2 class="font-cute text-3xl font-extrabold text-white mb-4">Transmission for Deandra</h2>
@@ -606,9 +442,7 @@
 
   </div>
 
-  <!-- ==========================================================================
-     MODALS & OVERLAYS
-     ========================================================================== -->
+  <!-- ================= MODALS & OVERLAYS ================= -->
   <!-- LIGHTBOX MODAL -->
   <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
     <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] rounded-2xl shadow-2xl border-2 border-white/20 mb-4">
@@ -630,128 +464,60 @@
         <div><span class="text-gray-500">STATUS:</span> <span class="text-emerald-400">REDEEMABLE 100%</span></div>
       </div>
 
-      <button onclick="document.getElementById('receipt-modal').classList.add('hidden')" class="w-full sticker-badge font-cute text-sm text-white font-bold py-2.5 rounded-xl">
+      <button onclick="document.getElementById('receipt-modal').classList.add('hidden')" class="w-full sticker-badge font-cute text-sm text-white font-bold py-2 rounded-xl">
         Close & Take Screenshot 📸
       </button>
     </div>
   </div>
 
 
-  <!-- ==========================================================================
-     COMPLETE JAVASCRIPT SYSTEM
-     ========================================================================== -->
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // --- 1. WEB AUDIO SYNTHESIZER (NO EXTERNAL SFX NEEDED) ---
-    function playSound(type = 'pop') {
+    // --- WEB AUDIO API (SOUND EFFECTS WITHOUT EXTERNAL MP3) ---
+    function playSound() {
       try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15); // A5
+        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
         osc.connect(gain);
         gain.connect(ctx.destination);
-
-        if (type === 'pop') {
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(400, ctx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.1);
-          gain.gain.setValueAtTime(0.15, ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-          osc.start();
-          osc.stop(ctx.currentTime + 0.1);
-        } else if (type === 'win') {
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
-          osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1); // E5
-          osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2); // G5
-          gain.gain.setValueAtTime(0.2, ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
-          osc.start();
-          osc.stop(ctx.currentTime + 0.35);
-        }
+        osc.start();
+        osc.stop(ctx.currentTime + 0.15);
       } catch(e){}
     }
 
-    // --- 2. CANVAS BACKGROUND ANIMATION ENGINE ---
-    const canvas = document.getElementById('ambient-canvas');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    for (let i = 0; i < 60; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-        speedY: Math.random() * 0.3 + 0.1,
-        opacity: Math.random()
-      });
-    }
-
-    function renderCanvas() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#ffffff';
-
-      stars.forEach(s => {
-        ctx.globalAlpha = s.opacity;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fill();
-
-        s.y -= s.speedY;
-        if (s.y < 0) s.y = canvas.height;
-      });
-
-      requestAnimationFrame(renderCanvas);
-    }
-    renderCanvas();
-
-    // --- 3. KEYPAD & GATEKEEPER PASSCODE LOGIC ---
-    let pinBuffer = '';
-    function pressPin(num) {
-      playSound('pop');
-      if (pinBuffer.length < 8) {
-        pinBuffer += num;
-        document.getElementById('pass-input').value = pinBuffer;
-      }
-    }
-
-    function clearPin() {
-      playSound('pop');
-      pinBuffer = '';
-      document.getElementById('pass-input').value = '';
-    }
-
+    // --- 0. GATEKEEPER SECURITY LOCK ---
     function checkPassword() {
-      playSound('pop');
+      playSound();
+      const input = document.getElementById('pass-input').value.replace(/[^0-9]/g, '');
       const err = document.getElementById('pass-error');
       
       // Accepts '030326' or full year '03032026'
-      if (pinBuffer === '030326' || pinBuffer === '03032026') {
-        playSound('win');
+      if (input === '030326' || input === '03032026') {
         const gatekeeper = document.getElementById('gatekeeper');
         gatekeeper.classList.add('opacity-0', 'pointer-events-none');
         setTimeout(() => {
           gatekeeper.classList.add('hidden');
           document.getElementById('main-content').classList.remove('hidden');
-          triggerBurst();
+          triggerHearts();
         }, 700);
       } else {
         err.classList.remove('hidden');
-        document.getElementById('gatekeeper-box').classList.add('shake-box');
-        setTimeout(() => document.getElementById('gatekeeper-box').classList.remove('shake-box'), 500);
+        document.getElementById('gatekeeper-box').classList.add('animate-pulse');
+        setTimeout(() => document.getElementById('gatekeeper-box').classList.remove('animate-pulse'), 500);
       }
     }
 
-    // --- 4. MUSIC & LYRIC SYNCHRONIZATION ---
+    // --- 1. MUSIC & LYRIC SYNCHRONIZATION ---
     const audio = document.getElementById('bg-music');
     const lyricsContainer = document.getElementById('lyrics-container');
 
+    // Backstreet Boys - Shape of My Heart Reff Sample
     const lyricsData = [
       { time: 0, text: "🎶 (Intro Music) 🎶" },
       { time: 60, text: "Looking back on the things I've done" },
@@ -761,20 +527,17 @@
     ];
 
     function toggleMusic() {
-      playSound('pop');
+      playSound();
       const playText = document.getElementById('play-text');
       const discIcon = document.getElementById('disc-icon');
-      const eqVis = document.getElementById('eq-visualizer');
 
       if (audio.paused) {
         audio.play();
         discIcon.classList.add('animate-spin');
-        eqVis.classList.remove('opacity-40');
         playText.innerText = 'Pause Vibe Track';
       } else {
         audio.pause();
         discIcon.classList.remove('animate-spin');
-        eqVis.classList.add('opacity-40');
         playText.innerText = 'Play Our Vibe Track';
       }
     }
@@ -788,7 +551,7 @@
       lyricsContainer.innerHTML = `<p class="animate-pulse text-pink-300 font-bold">${text}</p>`;
     });
 
-    // --- 5. TIME COUNTER & PROGRESS BAR ---
+    // --- 2. TIME COUNTER & PROGRESS BAR ---
     const startDate = new Date('2026-03-03T00:00:00');
     function updateCounter() {
       const now = new Date();
@@ -804,7 +567,7 @@
       document.getElementById('minutes').innerText = minutes >= 0 ? minutes : 0;
       document.getElementById('seconds').innerText = seconds >= 0 ? seconds : 0;
 
-      // Percentage of Year 1 Goal (365 days)
+      // Calculate percentage to 365 days
       const pct = Math.min(100, Math.max(0, ((days / 365) * 100))).toFixed(1);
       document.getElementById('year-progress-percent').innerText = `${pct}%`;
       document.getElementById('year-progress-bar').style.width = `${pct}%`;
@@ -812,13 +575,12 @@
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    // --- 6. SPIN THE LOVE WHEEL ---
+    // --- 3. SPIN THE LOVE WHEEL ---
     const wheelPrizes = ['Boba Date 🧋', 'Free Hug 🤗', 'Movie Choice 🍿', 'Danial Cooks 🍳', 'Unlimited Kisses 💋'];
     let isSpinning = false;
-
     function spinWheel() {
       if (isSpinning) return;
-      playSound('pop');
+      playSound();
       isSpinning = true;
 
       const wheelDisc = document.getElementById('wheel-disc');
@@ -829,98 +591,45 @@
       
       setTimeout(() => {
         isSpinning = false;
-        playSound('win');
         const prize = wheelPrizes[Math.floor(Math.random() * wheelPrizes.length)];
         wheelResult.innerText = `YOU WON: ${prize}! 🎉`;
         wheelResult.classList.remove('hidden');
-        triggerBurst();
+        triggerHearts();
       }, 4000);
     }
 
-    // --- 7. MULTI-QUESTION QUIZ SYSTEM ---
-    const quizData = [
-      {
-        question: "Who is officially the clingiest human in this relationship?",
-        options: ["Danial (100% No Cap)", "Deandra (Equally cute!)"]
-      },
-      {
-        question: "Who usually decides where to go eat on date night?",
-        options: ["Deandra (Food Boss)", "Danial (Follows Deandra)"]
-      },
-      {
-        question: "How long will Danial love Deandra?",
-        options: ["Until 3000 & Beyond!", "Forever and Ever!"]
-      }
-    ];
-
-    let currentQuizStep = 0;
-
-    function loadQuizStep() {
-      const stepText = document.getElementById('quiz-step');
-      const qText = document.getElementById('quiz-question-text');
-      const optContainer = document.getElementById('quiz-options');
-
-      stepText.innerText = `QUESTION ${currentQuizStep + 1} OF ${quizData.length}`;
-      qText.innerText = quizData[currentQuizStep].question;
-      optContainer.innerHTML = '';
-
-      quizData[currentQuizStep].options.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.className = 'bg-white/5 hover:bg-pink-500/20 border border-pink-400/30 py-3 px-4 rounded-2xl text-sm font-bold transition transform active:scale-95 text-white';
-        btn.innerText = opt;
-        btn.onclick = () => handleQuizAnswer();
-        optContainer.appendChild(btn);
-      });
-    }
-
-    function handleQuizAnswer() {
-      playSound('pop');
-      currentQuizStep++;
-      if (currentQuizStep < quizData.length) {
-        loadQuizStep();
-      } else {
-        playSound('win');
-        document.getElementById('quiz-container').classList.add('hidden');
-        document.getElementById('quiz-success').classList.remove('hidden');
-        triggerBurst();
-      }
-    }
-    loadQuizStep();
-
-    // --- 8. COUPON CLAIM RECEIPT ---
+    // --- 4. COUPON CLAIM & MODAL ---
     function claimCoupon(title) {
-      playSound('pop');
+      playSound();
       document.getElementById('receipt-title').innerText = title;
       document.getElementById('receipt-date').innerText = new Date().toLocaleDateString();
       document.getElementById('receipt-modal').classList.remove('hidden');
-      triggerBurst();
+      triggerHearts();
     }
 
-    // --- 9. LOVE CALCULATOR ---
+    // --- 5. LOVE METER CALCULATOR ---
     function calculateLove() {
-      playSound('win');
+      playSound();
       document.getElementById('love-meter-result').classList.remove('hidden');
-      triggerBurst();
+      triggerHearts();
     }
 
-    // --- 10. LIGHTBOX GALLERY ---
+    // --- 6. LIGHTBOX GALLERY ---
     function openLightbox(src, caption) {
-      playSound('pop');
+      playSound();
       document.getElementById('lightbox-img').src = src;
       document.getElementById('lightbox-caption').innerText = caption;
       document.getElementById('lightbox-modal').classList.remove('hidden');
     }
-
     function closeLightbox() {
       document.getElementById('lightbox-modal').classList.add('hidden');
     }
 
-    // --- 11. RUNAWAY BUTTON MECHANICS ---
+    // --- 7. RUNAWAY BUTTON ---
     const noBtnMessages = ['Nice try! 😜', 'Nope! 🚀', 'Can\'t click me!', 'Too slow! 💨', 'Danial only! ❤️'];
     let msgIdx = 0;
-
     function runAway() {
-      playSound('pop');
+      playSound();
       const btnNo = document.getElementById('btn-no');
       const rx = Math.floor(Math.random() * 180) - 90;
       const ry = Math.floor(Math.random() * 90) - 45;
@@ -930,26 +639,23 @@
     }
 
     function sayYes() {
-      playSound('win');
+      playSound();
       alert('Aaaaa Danial loves Deandra so much too! 🥰💖');
-      triggerBurst();
+      triggerHearts();
     }
 
-    // --- 12. PARTICLES BURST GENERATOR ---
-    function triggerBurst() {
-      const container = document.getElementById('particle-burst-container');
-      const emojis = ['💖', '✨', '🛸', '🥰', '👾', '🌸', '💍', '🍕'];
-
+    // --- 8. FLOATING PARTICLES ---
+    function triggerHearts() {
       for (let i = 0; i < 35; i++) {
         setTimeout(() => {
-          const el = document.createElement('div');
-          el.className = 'heart-particle font-cute text-2xl';
-          el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-          el.style.left = Math.random() * 100 + 'vw';
-          el.style.bottom = '0';
-          container.appendChild(el);
-          setTimeout(() => el.remove(), 3500);
-        }, i * 65);
+          const heart = document.createElement('div');
+          heart.className = 'heart-particle font-cute text-2xl';
+          heart.innerText = ['💖', '✨', '🛸', '🥰', '👾', '🌸'][Math.floor(Math.random() * 6)];
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.bottom = '0';
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 3500);
+        }, i * 70);
       }
     }
   </script>
